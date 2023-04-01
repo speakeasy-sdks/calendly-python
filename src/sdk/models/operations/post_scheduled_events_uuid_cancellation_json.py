@@ -10,13 +10,6 @@ from sdk import utils
 from typing import Optional
 
 
-@dataclasses.dataclass
-class PostScheduledEventsUUIDCancellationPathParams:
-    
-    uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})
-    r"""The event's unique indentifier"""  
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PostScheduledEventsUUIDCancellationApplicationJSON:
@@ -29,17 +22,18 @@ class PostScheduledEventsUUIDCancellationApplicationJSON:
 @dataclasses.dataclass
 class PostScheduledEventsUUIDCancellationJSONRequest:
     
-    path_params: PostScheduledEventsUUIDCancellationPathParams = dataclasses.field()  
-    request: Optional[PostScheduledEventsUUIDCancellationApplicationJSON] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})
+    r"""The event's unique indentifier"""  
+    request_body: Optional[PostScheduledEventsUUIDCancellationApplicationJSON] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     r"""Optional cancellation reason."""  
     
 class PostScheduledEventsUUIDCancellationJSON403ApplicationJSONMessageEnum(str, Enum):
-    YOU_ARE_NOT_ALLOWED_TO_CANCEL_THIS_EVENT = "You are not allowed to cancel this event"
-    EVENT_IN_THE_PAST = "Event in the past"
-    EVENT_IS_ALREADY_CANCELED = "Event is already canceled"
+    YOU_ARE_NOT_ALLOWED_TO_CANCEL_THIS_EVENT = 'You are not allowed to cancel this event'
+    EVENT_IN_THE_PAST = 'Event in the past'
+    EVENT_IS_ALREADY_CANCELED = 'Event is already canceled'
 
 class PostScheduledEventsUUIDCancellationJSON403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

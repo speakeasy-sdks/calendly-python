@@ -8,14 +8,14 @@ from sdk import utils
 
 class GoogleConferenceStatusEnum(str, Enum):
     r"""Indicates the current status of the Google conference"""
-    INITIATED = "initiated"
-    PROCESSING = "processing"
-    PUSHED = "pushed"
-    FAILED = "failed"
+    INITIATED = 'initiated'
+    PROCESSING = 'processing'
+    PUSHED = 'pushed'
+    FAILED = 'failed'
 
 class GoogleConferenceTypeEnum(str, Enum):
     r"""The event location is a Google Meet or Hangouts conference"""
-    GOOGLE_CONFERENCE = "google_conference"
+    GOOGLE_CONFERENCE = 'google_conference'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

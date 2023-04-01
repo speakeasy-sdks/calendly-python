@@ -23,13 +23,6 @@ class PostDataComplianceDeletionEventsRequestBody:
     r"""The scheduled events UTC timestamp at which data deletion should begin."""  
     
 
-@dataclasses.dataclass
-class PostDataComplianceDeletionEventsRequest:
-    
-    request: PostDataComplianceDeletionEventsRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
-    r"""The start and end times that delineate the time range for scheduled events data deletion."""  
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PostDataComplianceDeletionEventsErrorResponseDetails:

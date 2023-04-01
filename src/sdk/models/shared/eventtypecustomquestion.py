@@ -8,11 +8,11 @@ from sdk import utils
 
 class EventTypeCustomQuestionTypeEnum(str, Enum):
     r"""The type of response that the invitee provides to the custom question; can be one or multiple lines of text, a phone number, or single- or multiple-select."""
-    STRING = "string"
-    TEXT = "text"
-    PHONE_NUMBER = "phone_number"
-    SINGLE_SELECT = "single_select"
-    MULTI_SELECT = "multi_select"
+    STRING = 'string'
+    TEXT = 'text'
+    PHONE_NUMBER = 'phone_number'
+    SINGLE_SELECT = 'single_select'
+    MULTI_SELECT = 'multi_select'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

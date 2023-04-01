@@ -21,12 +21,11 @@ class Shares:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def post_shares(self, request: operations.PostSharesRequest) -> operations.PostSharesResponse:
+    def post_shares(self, request: operations.PostSharesRequestBody) -> operations.PostSharesResponse:
         r"""Create Share
         Creates a share
         
         **Note: Any paramater which is not provided in the request body will be copied from the target Event Type.**
-        
         """
         base_url = self._server_url
         

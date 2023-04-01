@@ -11,9 +11,9 @@ from marshmallow import fields
 from sdk import utils
 
 class RoutingFormStatusEnum(str, Enum):
-    r"""Indicates if the form is in \"draft\" or \"published\" status."""
-    DRAFT = "draft"
-    PUBLISHED = "published"
+    r"""Indicates if the form is in \\"draft\\" or \\"published\\" status."""
+    DRAFT = 'draft'
+    PUBLISHED = 'published'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -30,11 +30,9 @@ class RoutingForm:
     questions: list[shared_question.Question] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('questions') }})
     r"""An ordered collection of Routing Form non-deleted questions."""  
     status: RoutingFormStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
-    r"""Indicates if the form is in \"draft\" or \"published\" status."""  
+    r"""Indicates if the form is in \\"draft\\" or \\"published\\" status."""  
     updated_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updated_at'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
     r"""The moment when the routing form was last updated."""  
     uri: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uri') }})
-    r"""Canonical reference (unique identifier) for the routing form.
-    
-    """  
+    r"""Canonical reference (unique identifier) for the routing form."""  
     

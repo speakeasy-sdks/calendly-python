@@ -10,15 +10,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetUsersUserUUIDWebhooksWebhookUUIDPathParams:
-    
-    webhook_uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'webhook_uuid', 'style': 'simple', 'explode': False }})  
-    
-
-@dataclasses.dataclass
 class GetUsersUserUUIDWebhooksWebhookUUIDRequest:
     
-    path_params: GetUsersUserUUIDWebhooksWebhookUUIDPathParams = dataclasses.field()  
+    webhook_uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'webhook_uuid', 'style': 'simple', 'explode': False }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

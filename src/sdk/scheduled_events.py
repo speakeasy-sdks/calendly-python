@@ -27,7 +27,7 @@ class ScheduledEvents:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.DeleteInviteeNoShowPathParams, base_url, '/invitee_no_shows/{uuid}', request.path_params)
+        url = utils.generate_url(operations.DeleteInviteeNoShowRequest, base_url, '/invitee_no_shows/{uuid}', request)
         
         
         client = self._security_client
@@ -52,7 +52,7 @@ class ScheduledEvents:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetScheduledEventsEventUUIDInviteesInviteeUUIDPathParams, base_url, '/scheduled_events/{event_uuid}/invitees/{invitee_uuid}', request.path_params)
+        url = utils.generate_url(operations.GetScheduledEventsEventUUIDInviteesInviteeUUIDRequest, base_url, '/scheduled_events/{event_uuid}/invitees/{invitee_uuid}', request)
         
         
         client = self._security_client
@@ -83,7 +83,7 @@ class ScheduledEvents:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetScheduledEventsUUIDPathParams, base_url, '/scheduled_events/{uuid}', request.path_params)
+        url = utils.generate_url(operations.GetScheduledEventsUUIDRequest, base_url, '/scheduled_events/{uuid}', request)
         
         
         client = self._security_client
@@ -114,7 +114,7 @@ class ScheduledEvents:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetInviteeNoShowPathParams, base_url, '/invitee_no_shows/{uuid}', request.path_params)
+        url = utils.generate_url(operations.GetInviteeNoShowRequest, base_url, '/invitee_no_shows/{uuid}', request)
         
         
         client = self._security_client
@@ -141,9 +141,9 @@ class ScheduledEvents:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetInviteesPathParams, base_url, '/scheduled_events/{uuid}/invitees', request.path_params)
+        url = utils.generate_url(operations.GetInviteesRequest, base_url, '/scheduled_events/{uuid}/invitees', request)
         
-        query_params = utils.get_query_params(operations.GetInviteesQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.GetInviteesRequest, request)
         
         client = self._security_client
         
@@ -183,7 +183,7 @@ class ScheduledEvents:
         
         url = base_url.removesuffix('/') + '/scheduled_events'
         
-        query_params = utils.get_query_params(operations.GetScheduledEventsQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.GetScheduledEventsRequest, request)
         
         client = self._security_client
         
@@ -213,10 +213,10 @@ class ScheduledEvents:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.PostScheduledEventsUUIDCancellationPathParams, base_url, '/scheduled_events/{uuid}/cancellation', request.path_params)
+        url = utils.generate_url(operations.PostScheduledEventsUUIDCancellationJSONRequest, base_url, '/scheduled_events/{uuid}/cancellation', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -248,10 +248,10 @@ class ScheduledEvents:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.PostScheduledEventsUUIDCancellationPathParams, base_url, '/scheduled_events/{uuid}/cancellation', request.path_params)
+        url = utils.generate_url(operations.PostScheduledEventsUUIDCancellationMultipartRequest, base_url, '/scheduled_events/{uuid}/cancellation', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -283,10 +283,10 @@ class ScheduledEvents:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.PostScheduledEventsUUIDCancellationPathParams, base_url, '/scheduled_events/{uuid}/cancellation', request.path_params)
+        url = utils.generate_url(operations.PostScheduledEventsUUIDCancellationRawRequest, base_url, '/scheduled_events/{uuid}/cancellation', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'raw')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'raw')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         
@@ -312,7 +312,7 @@ class ScheduledEvents:
 
         return res
 
-    def post_invitee_no_show(self, request: operations.PostInviteeNoShowRequest) -> operations.PostInviteeNoShowResponse:
+    def post_invitee_no_show(self, request: operations.PostInviteeNoShowRequestBody) -> operations.PostInviteeNoShowResponse:
         r"""Create Invitee No Show
         Marks an Invitee as a No Show.
         """

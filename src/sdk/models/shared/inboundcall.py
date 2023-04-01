@@ -7,10 +7,8 @@ from enum import Enum
 from sdk import utils
 
 class InboundCallTypeEnum(str, Enum):
-    r"""	
-    Indicates that the invitee will call the event host
-    """
-    INBOUND_CALL = "inbound_call"
+    r"""Indicates that the invitee will call the event host"""
+    INBOUND_CALL = 'inbound_call'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -21,7 +19,5 @@ class InboundCall:
     location: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('location') }})
     r"""The phone number the invitee will use to call the event host (publisher)"""  
     type: InboundCallTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    r"""	
-    Indicates that the invitee will call the event host
-    """  
+    r"""Indicates that the invitee will call the event host"""  
     

@@ -28,14 +28,14 @@ class MicrosoftTeamsConferenceData:
     
 class MicrosoftTeamsConferenceStatusEnum(str, Enum):
     r"""Indicates the current status of the Microsoft Teams conference"""
-    INITIATED = "initiated"
-    PROCESSING = "processing"
-    PUSHED = "pushed"
-    FAILED = "failed"
+    INITIATED = 'initiated'
+    PROCESSING = 'processing'
+    PUSHED = 'pushed'
+    FAILED = 'failed'
 
 class MicrosoftTeamsConferenceTypeEnum(str, Enum):
     r"""The event location is a Zoom conference"""
-    MICROSOFT_TEAMS_CONFERENCE = "microsoft_teams_conference"
+    MICROSOFT_TEAMS_CONFERENCE = 'microsoft_teams_conference'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -21,5 +21,5 @@ class EventTypeAvailableTime:
     start_time: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('start_time'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
     r"""The moment the event was scheduled to start in UTC time"""  
     status: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
-    r"""Indicates that the open time slot is \"available\""""  
+    r"""Indicates that the open time slot is \\"available\\" """  
     

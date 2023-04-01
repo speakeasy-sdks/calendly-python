@@ -35,14 +35,14 @@ class WebExConferenceData:
     
 class WebExConferenceStatusEnum(str, Enum):
     r"""Indicates the current status of the WebEx conference"""
-    INITIATED = "initiated"
-    PROCESSING = "processing"
-    PUSHED = "pushed"
-    FAILED = "failed"
+    INITIATED = 'initiated'
+    PROCESSING = 'processing'
+    PUSHED = 'pushed'
+    FAILED = 'failed'
 
 class WebExConferenceTypeEnum(str, Enum):
     r"""The event location is a WebEx conference"""
-    WEBEX_CONFERENCE = "webex_conference"
+    WEBEX_CONFERENCE = 'webex_conference'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

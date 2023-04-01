@@ -12,7 +12,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetUserBusyTimesQueryParams:
+class GetUserBusyTimesRequest:
     
     end_time: str = dataclasses.field(metadata={'query_param': { 'field_name': 'end_time', 'style': 'form', 'explode': True }})
     r"""End time of the requested availability range"""  
@@ -21,17 +21,11 @@ class GetUserBusyTimesQueryParams:
     user: str = dataclasses.field(metadata={'query_param': { 'field_name': 'user', 'style': 'form', 'explode': True }})
     r"""The uri associated with the user"""  
     
-
-@dataclasses.dataclass
-class GetUserBusyTimesRequest:
-    
-    query_params: GetUserBusyTimesQueryParams = dataclasses.field()  
-    
 class GetUserBusyTimes403ApplicationJSONMessageEnum(str, Enum):
-    THIS_USER_IS_NOT_IN_YOUR_ORGANIZATION = "This user is not in your organization"
+    THIS_USER_IS_NOT_IN_YOUR_ORGANIZATION = 'This user is not in your organization'
 
 class GetUserBusyTimes403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

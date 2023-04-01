@@ -10,19 +10,19 @@ from marshmallow import fields
 from sdk import utils
 
 class WebhookSubscriptionEventsEnum(str, Enum):
-    INVITEE_CREATED = "invitee.created"
-    INVITEE_CANCELED = "invitee.canceled"
-    ROUTING_FORM_SUBMISSION_CREATED = "routing_form_submission.created"
+    INVITEE_CREATED = 'invitee.created'
+    INVITEE_CANCELED = 'invitee.canceled'
+    ROUTING_FORM_SUBMISSION_CREATED = 'routing_form_submission.created'
 
 class WebhookSubscriptionScopeEnum(str, Enum):
     r"""The scope of the webhook subscription"""
-    USER = "user"
-    ORGANIZATION = "organization"
+    USER = 'user'
+    ORGANIZATION = 'organization'
 
 class WebhookSubscriptionStateEnum(str, Enum):
-    r"""Indicates if the webhook subscription is \"active\" or \"disabled\""""
-    ACTIVE = "active"
-    DISABLED = "disabled"
+    r"""Indicates if the webhook subscription is \\"active\\" or \\"disabled\\" """
+    ACTIVE = 'active'
+    DISABLED = 'disabled'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -33,7 +33,7 @@ class WebhookSubscription:
     callback_url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('callback_url') }})
     r"""The callback URL to use when the event is triggered"""  
     created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The moment when the webhook subscription was created (e.g. \"2020-01-02T03:04:05.678123Z\")"""  
+    r"""The moment when the webhook subscription was created (e.g. \\"2020-01-02T03:04:05.678123Z\\")"""  
     creator: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('creator') }})
     r"""The URI of the user who created the webhook subscription"""  
     events: list[WebhookSubscriptionEventsEnum] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('events') }})
@@ -45,9 +45,9 @@ class WebhookSubscription:
     scope: WebhookSubscriptionScopeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('scope') }})
     r"""The scope of the webhook subscription"""  
     state: WebhookSubscriptionStateEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('state') }})
-    r"""Indicates if the webhook subscription is \"active\" or \"disabled\""""  
+    r"""Indicates if the webhook subscription is \\"active\\" or \\"disabled\\" """  
     updated_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updated_at'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The moment when the webhook subscription was last updated (e.g. \"2020-01-02T03:04:05.678123Z\")"""  
+    r"""The moment when the webhook subscription was last updated (e.g. \\"2020-01-02T03:04:05.678123Z\\")"""  
     uri: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uri') }})
     r"""Canonical reference (unique identifier) for the webhook"""  
     user: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('user') }})

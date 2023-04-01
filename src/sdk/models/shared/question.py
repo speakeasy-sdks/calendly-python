@@ -8,13 +8,13 @@ from sdk import utils
 
 class QuestionTypeEnum(str, Enum):
     r"""Question type: name, text input, email, phone, textarea input, dropdown list or radio button list."""
-    NAME = "name"
-    TEXT = "text"
-    EMAIL = "email"
-    PHONE = "phone"
-    TEXTAREA = "textarea"
-    SELECT = "select"
-    RADIOS = "radios"
+    NAME = 'name'
+    TEXT = 'text'
+    EMAIL = 'email'
+    PHONE = 'phone'
+    TEXTAREA = 'textarea'
+    SELECT = 'select'
+    RADIOS = 'radios'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -23,13 +23,11 @@ class Question:
     r"""Routing form questions."""
     
     answer_choices: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('answer_choices') }})
-    r"""The respondent’s option(s) for \"select\" or \"radios\" types of questions."""  
+    r"""The respondent’s option(s) for \\"select\\" or \\"radios\\" types of questions."""  
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""Question name (in human-readable format)."""  
     required: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('required') }})
-    r"""true if an answer to the question is required for respondents to submit the routing form; false if not required.
-    
-    """  
+    r"""true if an answer to the question is required for respondents to submit the routing form; false if not required."""  
     type: QuestionTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""Question type: name, text input, email, phone, textarea input, dropdown list or radio button list."""  
     uuid: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uuid') }})

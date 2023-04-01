@@ -9,15 +9,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class DeleteUsersUserUUIDWebhooksWebhookUUIDPathParams:
-    
-    webhook_uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'webhook_uuid', 'style': 'simple', 'explode': False }})  
-    
-
-@dataclasses.dataclass
 class DeleteUsersUserUUIDWebhooksWebhookUUIDRequest:
     
-    path_params: DeleteUsersUserUUIDWebhooksWebhookUUIDPathParams = dataclasses.field()  
+    webhook_uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'webhook_uuid', 'style': 'simple', 'explode': False }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

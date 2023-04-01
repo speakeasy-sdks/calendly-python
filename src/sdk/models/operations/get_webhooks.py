@@ -12,12 +12,12 @@ from typing import Optional
 
 class GetWebhooksScopeEnum(str, Enum):
     r"""Filter the list by organization or user"""
-    ORGANIZATION = "organization"
-    USER = "user"
+    ORGANIZATION = 'organization'
+    USER = 'user'
 
 
 @dataclasses.dataclass
-class GetWebhooksQueryParams:
+class GetWebhooksRequest:
     
     organization: str = dataclasses.field(metadata={'query_param': { 'field_name': 'organization', 'style': 'form', 'explode': True }})
     r"""Indicates if the results should be filtered by organization"""  
@@ -35,19 +35,13 @@ class GetWebhooksQueryParams:
     user: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'user', 'style': 'form', 'explode': True }})
     r"""Indicates if the results should be filtered by user. This parameter is only required if the `scope` parameter is set to `user`."""  
     
-
-@dataclasses.dataclass
-class GetWebhooksRequest:
-    
-    query_params: GetWebhooksQueryParams = dataclasses.field()  
-    
 class GetWebhooks403ApplicationJSONMessageEnum(str, Enum):
-    YOU_DO_NOT_HAVE_PERMISSION = "You do not have permission"
-    YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = "You do not have permission to access this resource."
-    UNAUTHORIZED = "Unauthorized"
+    YOU_DO_NOT_HAVE_PERMISSION = 'You do not have permission'
+    YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = 'You do not have permission to access this resource.'
+    UNAUTHORIZED = 'Unauthorized'
 
 class GetWebhooks403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

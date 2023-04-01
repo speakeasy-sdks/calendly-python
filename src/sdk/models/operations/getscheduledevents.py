@@ -12,21 +12,21 @@ from typing import Optional
 
 class GetScheduledEventsStatusEnum(str, Enum):
     r"""Whether the scheduled event is `active` or `canceled`"""
-    ACTIVE = "active"
-    CANCELED = "canceled"
+    ACTIVE = 'active'
+    CANCELED = 'canceled'
 
 
 @dataclasses.dataclass
-class GetScheduledEventsQueryParams:
+class GetScheduledEventsRequest:
     
     count: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'count', 'style': 'form', 'explode': True }})
     r"""The number of rows to return"""  
     invitee_email: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'invitee_email', 'style': 'form', 'explode': True }})
     r"""Return events that are scheduled with the invitee associated with this email address"""  
     max_start_time: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'max_start_time', 'style': 'form', 'explode': True }})
-    r"""Include events with start times prior to this time (sample time format: \"2020-01-02T03:04:05.678123Z\"). This time should use the UTC timezone."""  
+    r"""Include events with start times prior to this time (sample time format: \\"2020-01-02T03:04:05.678123Z\\"). This time should use the UTC timezone."""  
     min_start_time: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'min_start_time', 'style': 'form', 'explode': True }})
-    r"""Include events with start times after this time (sample time format: \"2020-01-02T03:04:05.678123Z\"). This time should use the UTC timezone."""  
+    r"""Include events with start times after this time (sample time format: \\"2020-01-02T03:04:05.678123Z\\"). This time should use the UTC timezone."""  
     organization: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'organization', 'style': 'form', 'explode': True }})
     r"""Return events that are scheduled with the organization associated with this URI"""  
     page_token: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'page_token', 'style': 'form', 'explode': True }})
@@ -41,20 +41,14 @@ class GetScheduledEventsQueryParams:
     user: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'user', 'style': 'form', 'explode': True }})
     r"""Return events that are scheduled with the user associated with this URI"""  
     
-
-@dataclasses.dataclass
-class GetScheduledEventsRequest:
-    
-    query_params: GetScheduledEventsQueryParams = dataclasses.field()  
-    
 class GetScheduledEvents403ApplicationJSONMessageEnum(str, Enum):
-    YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = "You do not have permission to access this resource."
-    PLEASE_ALSO_SPECIFY_ORGANIZATION_WHEN_REQUESTING_EVENTS_FOR_A_USER_WITHIN_YOUR_ORGANIZATION_ = "Please also specify organization when requesting events for a user within your organization."
-    THIS_USER_IS_NOT_IN_YOUR_ORGANIZATION = "This user is not in your organization"
-    YOU_DO_NOT_HAVE_PERMISSION = "You do not have permission"
+    YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = 'You do not have permission to access this resource.'
+    PLEASE_ALSO_SPECIFY_ORGANIZATION_WHEN_REQUESTING_EVENTS_FOR_A_USER_WITHIN_YOUR_ORGANIZATION_ = 'Please also specify organization when requesting events for a user within your organization.'
+    THIS_USER_IS_NOT_IN_YOUR_ORGANIZATION = 'This user is not in your organization'
+    YOU_DO_NOT_HAVE_PERMISSION = 'You do not have permission'
 
 class GetScheduledEvents403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

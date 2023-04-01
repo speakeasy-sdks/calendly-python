@@ -11,18 +11,12 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetScheduledEventsEventUUIDInviteesInviteeUUIDPathParams:
+class GetScheduledEventsEventUUIDInviteesInviteeUUIDRequest:
     
     event_uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'event_uuid', 'style': 'simple', 'explode': False }})
     r"""The event's unique identifier"""  
     invitee_uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'invitee_uuid', 'style': 'simple', 'explode': False }})
     r"""The invitee's unique identifier"""  
-    
-
-@dataclasses.dataclass
-class GetScheduledEventsEventUUIDInviteesInviteeUUIDRequest:
-    
-    path_params: GetScheduledEventsEventUUIDInviteesInviteeUUIDPathParams = dataclasses.field()  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

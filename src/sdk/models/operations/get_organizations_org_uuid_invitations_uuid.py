@@ -10,18 +10,12 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetOrganizationsOrgUUIDInvitationsUUIDPathParams:
+class GetOrganizationsOrgUUIDInvitationsUUIDRequest:
     
     org_uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'org_uuid', 'style': 'simple', 'explode': False }})
     r"""The organization’s unique identifier"""  
     uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})
     r"""The organization invitation's unique identifier"""  
-    
-
-@dataclasses.dataclass
-class GetOrganizationsOrgUUIDInvitationsUUIDRequest:
-    
-    path_params: GetOrganizationsOrgUUIDInvitationsUUIDPathParams = dataclasses.field()  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

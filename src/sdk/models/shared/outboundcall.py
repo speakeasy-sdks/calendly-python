@@ -8,7 +8,7 @@ from sdk import utils
 
 class OutboundCallTypeEnum(str, Enum):
     r"""Indicates that the event host (publisher) will call the invitee"""
-    OUTBOUND_CALL = "outbound_call"
+    OUTBOUND_CALL = 'outbound_call'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

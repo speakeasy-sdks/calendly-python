@@ -27,7 +27,7 @@ class Webhooks:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.DeleteUsersUserUUIDWebhooksWebhookUUIDPathParams, base_url, '/webhook_subscriptions/{webhook_uuid}', request.path_params)
+        url = utils.generate_url(operations.DeleteUsersUserUUIDWebhooksWebhookUUIDRequest, base_url, '/webhook_subscriptions/{webhook_uuid}', request)
         
         
         client = self._security_client
@@ -52,7 +52,7 @@ class Webhooks:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetUsersUserUUIDWebhooksWebhookUUIDPathParams, base_url, '/webhook_subscriptions/{webhook_uuid}', request.path_params)
+        url = utils.generate_url(operations.GetUsersUserUUIDWebhooksWebhookUUIDRequest, base_url, '/webhook_subscriptions/{webhook_uuid}', request)
         
         
         client = self._security_client
@@ -81,7 +81,7 @@ class Webhooks:
         
         url = base_url.removesuffix('/') + '/webhook_subscriptions'
         
-        query_params = utils.get_query_params(operations.GetWebhooksQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.GetWebhooksRequest, request)
         
         client = self._security_client
         
@@ -105,7 +105,7 @@ class Webhooks:
 
         return res
 
-    def post_users_uuid_webhooks(self, request: operations.PostUsersUUIDWebhooksRequest) -> operations.PostUsersUUIDWebhooksResponse:
+    def post_users_uuid_webhooks(self, request: operations.PostUsersUUIDWebhooksRequestBody) -> operations.PostUsersUUIDWebhooksResponse:
         r"""Create Webhook Subscription
         Create a Webhook Subscription for an Organization or User.
         

@@ -26,16 +26,16 @@ class InviteeNoShow1:
     
 class InviteePaymentCurrencyEnum(str, Enum):
     r"""The currency format that the payment is in."""
-    AUD = "AUD"
-    CAD = "CAD"
-    EUR = "EUR"
-    GBP = "GBP"
-    USD = "USD"
+    AUD = 'AUD'
+    CAD = 'CAD'
+    EUR = 'EUR'
+    GBP = 'GBP'
+    USD = 'USD'
 
 class InviteePaymentProviderEnum(str, Enum):
     r"""Payment provider"""
-    STRIPE = "stripe"
-    PAYPAL = "paypal"
+    STRIPE = 'stripe'
+    PAYPAL = 'paypal'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -68,9 +68,9 @@ class InviteeReconfirmation:
     r"""When the reconfirmation was created."""  
     
 class InviteeStatusEnum(str, Enum):
-    r"""Indicates if the invitee is \"active\" or \"canceled\""""
-    ACTIVE = "active"
-    CANCELED = "canceled"
+    r"""Indicates if the invitee is \\"active\\" or \\"canceled\\" """
+    ACTIVE = 'active'
+    CANCELED = 'canceled'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -81,7 +81,7 @@ class Invitee:
     cancel_url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('cancel_url') }})
     r"""Link to cancelling the event for the invitee"""  
     created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The moment when the event was created (e.g. \"2020-01-02T03:04:05.678123Z\")"""  
+    r"""The moment when the event was created (e.g. \\"2020-01-02T03:04:05.678123Z\\")"""  
     email: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email') }})
     r"""The invitee’s email address"""  
     event: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('event') }})
@@ -111,7 +111,7 @@ class Invitee:
     routing_form_submission: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('routing_form_submission') }})
     r"""Reference to a routing form submission that redirected the invitee to a booking page."""  
     status: InviteeStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
-    r"""Indicates if the invitee is \"active\" or \"canceled\""""  
+    r"""Indicates if the invitee is \\"active\\" or \\"canceled\\" """  
     text_reminder_number: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text_reminder_number') }})
     r"""The phone number to use when sending text (SMS) reminders"""  
     timezone: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timezone') }})
@@ -119,7 +119,7 @@ class Invitee:
     tracking: shared_inviteetracking.InviteeTracking = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tracking') }})
     r"""The UTM and Salesforce tracking parameters associated with an Invitee"""  
     updated_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updated_at'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The moment when the event was last updated (e.g. \"2020-01-02T03:04:05.678123Z\")"""  
+    r"""The moment when the event was last updated (e.g. \\"2020-01-02T03:04:05.678123Z\\")"""  
     uri: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uri') }})
     r"""Canonical reference (unique identifier) for the invitee"""  
     cancellation: Optional[shared_cancellation.Cancellation] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('cancellation'), 'exclude': lambda f: f is None }})

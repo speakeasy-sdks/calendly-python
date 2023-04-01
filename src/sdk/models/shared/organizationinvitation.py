@@ -11,10 +11,10 @@ from sdk import utils
 from typing import Optional
 
 class OrganizationInvitationStatusEnum(str, Enum):
-    r"""The status of the invitation (\"pending\", \"accepted\", or \"declined\")"""
-    PENDING = "pending"
-    ACCEPTED = "accepted"
-    DECLINED = "declined"
+    r"""The status of the invitation (\\"pending\\", \\"accepted\\", or \\"declined\\")"""
+    PENDING = 'pending'
+    ACCEPTED = 'accepted'
+    DECLINED = 'declined'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -23,17 +23,17 @@ class OrganizationInvitation:
     r"""Organization Invitation object"""
     
     created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The moment the invitation was created (e.g. “2020-01-02T03:04:05.678123Z\")"""  
+    r"""The moment the invitation was created (e.g. “2020-01-02T03:04:05.678123Z\\")"""  
     email: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email') }})
     r"""The email address of the person who was invited to join the organization"""  
     last_sent_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('last_sent_at'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The moment the invitation was last sent (e.g. \"2020-01-02T03:04:05.678123Z\")"""  
+    r"""The moment the invitation was last sent (e.g. \\"2020-01-02T03:04:05.678123Z\\")"""  
     organization: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('organization') }})
     r"""Canonical reference (unique identifier) for the organization"""  
     status: OrganizationInvitationStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
-    r"""The status of the invitation (\"pending\", \"accepted\", or \"declined\")"""  
+    r"""The status of the invitation (\\"pending\\", \\"accepted\\", or \\"declined\\")"""  
     updated_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updated_at'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The moment the invitation was last updated (e.g. \"2020-01-02T03:04:05.678123Z\")"""  
+    r"""The moment the invitation was last updated (e.g. \\"2020-01-02T03:04:05.678123Z\\")"""  
     uri: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uri') }})
     r"""Canonical reference (unique identifier) for the organization invitation"""  
     user: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('user'), 'exclude': lambda f: f is None }})

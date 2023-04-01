@@ -27,7 +27,7 @@ class EventTypes:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetEventTypesUUIDPathParams, base_url, '/event_types/{uuid}', request.path_params)
+        url = utils.generate_url(operations.GetEventTypesUUIDRequest, base_url, '/event_types/{uuid}', request)
         
         
         client = self._security_client
@@ -61,7 +61,7 @@ class EventTypes:
         
         url = base_url.removesuffix('/') + '/event_type_available_times'
         
-        query_params = utils.get_query_params(operations.GetEventTypeAvailableTimesQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.GetEventTypeAvailableTimesRequest, request)
         
         client = self._security_client
         
@@ -95,7 +95,7 @@ class EventTypes:
         
         url = base_url.removesuffix('/') + '/event_types'
         
-        query_params = utils.get_query_params(operations.GetEventTypesQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.GetEventTypesRequest, request)
         
         client = self._security_client
         

@@ -10,21 +10,16 @@ from enum import Enum
 from sdk import utils
 from typing import Optional
 
+class GetInviteesStatusEnum(str, Enum):
+    r"""Indicates if the invitee \\"canceled\\" or still \\"active\\" """
+    ACTIVE = 'active'
+    CANCELED = 'canceled'
+
 
 @dataclasses.dataclass
-class GetInviteesPathParams:
+class GetInviteesRequest:
     
     uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})  
-    
-class GetInviteesStatusEnum(str, Enum):
-    r"""Indicates if the invitee \"canceled\" or still \"active\""""
-    ACTIVE = "active"
-    CANCELED = "canceled"
-
-
-@dataclasses.dataclass
-class GetInviteesQueryParams:
-    
     count: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'count', 'style': 'form', 'explode': True }})
     r"""The number of rows to return"""  
     email: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'email', 'style': 'form', 'explode': True }})
@@ -32,22 +27,15 @@ class GetInviteesQueryParams:
     page_token: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'page_token', 'style': 'form', 'explode': True }})
     r"""The token to pass to get the next or previous portion of the collection"""  
     sort: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'sort', 'style': 'form', 'explode': True }})
-    r"""Order results by the **created_at** field and direction specified: ascending (\"asc\") or descending (\"desc\")"""  
+    r"""Order results by the **created_at** field and direction specified: ascending (\\"asc\\") or descending (\\"desc\\")"""  
     status: Optional[GetInviteesStatusEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'status', 'style': 'form', 'explode': True }})
-    r"""Indicates if the invitee \"canceled\" or still \"active\""""  
-    
-
-@dataclasses.dataclass
-class GetInviteesRequest:
-    
-    path_params: GetInviteesPathParams = dataclasses.field()  
-    query_params: GetInviteesQueryParams = dataclasses.field()  
+    r"""Indicates if the invitee \\"canceled\\" or still \\"active\\" """  
     
 class GetInvitees403ApplicationJSONMessageEnum(str, Enum):
-    YOU_ARE_NOT_ALLOWED_TO_VIEW_THIS_EVENT = "You are not allowed to view this event"
+    YOU_ARE_NOT_ALLOWED_TO_VIEW_THIS_EVENT = 'You are not allowed to view this event'
 
 class GetInvitees403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

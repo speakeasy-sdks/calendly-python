@@ -8,7 +8,7 @@ from sdk import utils
 
 class SubmissionExternalURLResultTypeEnum(str, Enum):
     r"""Indicates that the routing form submission resulted in a redirect to an external URL."""
-    EXTERNAL_URL = "external_url"
+    EXTERNAL_URL = 'external_url'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

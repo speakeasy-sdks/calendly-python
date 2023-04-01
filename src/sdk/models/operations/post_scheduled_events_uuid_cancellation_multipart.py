@@ -11,26 +11,20 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class PostScheduledEventsUUIDCancellationPathParams:
+class PostScheduledEventsUUIDCancellationMultipartRequest:
     
     uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})
     r"""The event's unique indentifier"""  
-    
-
-@dataclasses.dataclass
-class PostScheduledEventsUUIDCancellationMultipartRequest:
-    
-    path_params: PostScheduledEventsUUIDCancellationPathParams = dataclasses.field()  
-    request: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'multipart/form-data' }})
+    request_body: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'multipart/form-data' }})
     r"""Optional cancellation reason."""  
     
 class PostScheduledEventsUUIDCancellationMultipart403ApplicationJSONMessageEnum(str, Enum):
-    YOU_ARE_NOT_ALLOWED_TO_CANCEL_THIS_EVENT = "You are not allowed to cancel this event"
-    EVENT_IN_THE_PAST = "Event in the past"
-    EVENT_IS_ALREADY_CANCELED = "Event is already canceled"
+    YOU_ARE_NOT_ALLOWED_TO_CANCEL_THIS_EVENT = 'You are not allowed to cancel this event'
+    EVENT_IN_THE_PAST = 'Event in the past'
+    EVENT_IS_ALREADY_CANCELED = 'Event is already canceled'
 
 class PostScheduledEventsUUIDCancellationMultipart403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

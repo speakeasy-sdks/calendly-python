@@ -11,22 +11,16 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetUserAvailabilitySchedulesQueryParams:
+class GetUserAvailabilitySchedulesRequest:
     
     user: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'user', 'style': 'form', 'explode': True }})
     r"""A URI reference to a user"""  
     
-
-@dataclasses.dataclass
-class GetUserAvailabilitySchedulesRequest:
-    
-    query_params: GetUserAvailabilitySchedulesQueryParams = dataclasses.field()  
-    
 class GetUserAvailabilitySchedules403ApplicationJSONMessageEnum(str, Enum):
-    THIS_USER_IS_NOT_IN_YOUR_ORGANIZATION = "This user is not in your organization"
+    THIS_USER_IS_NOT_IN_YOUR_ORGANIZATION = 'This user is not in your organization'
 
 class GetUserAvailabilitySchedules403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

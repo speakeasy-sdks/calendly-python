@@ -11,26 +11,20 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class PostScheduledEventsUUIDCancellationPathParams:
+class PostScheduledEventsUUIDCancellationRawRequest:
     
     uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})
     r"""The event's unique indentifier"""  
-    
-
-@dataclasses.dataclass
-class PostScheduledEventsUUIDCancellationRawRequest:
-    
-    path_params: PostScheduledEventsUUIDCancellationPathParams = dataclasses.field()  
-    request: Optional[bytes] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/xml' }})
+    request_body: Optional[bytes] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/xml' }})
     r"""Optional cancellation reason."""  
     
 class PostScheduledEventsUUIDCancellationRaw403ApplicationJSONMessageEnum(str, Enum):
-    YOU_ARE_NOT_ALLOWED_TO_CANCEL_THIS_EVENT = "You are not allowed to cancel this event"
-    EVENT_IN_THE_PAST = "Event in the past"
-    EVENT_IS_ALREADY_CANCELED = "Event is already canceled"
+    YOU_ARE_NOT_ALLOWED_TO_CANCEL_THIS_EVENT = 'You are not allowed to cancel this event'
+    EVENT_IN_THE_PAST = 'Event in the past'
+    EVENT_IS_ALREADY_CANCELED = 'Event is already canceled'
 
 class PostScheduledEventsUUIDCancellationRaw403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

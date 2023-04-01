@@ -14,20 +14,20 @@ from sdk import utils
 from typing import Optional
 
 class ActivityLogSortEnum(str, Enum):
-    ACTION_ASC = "action:asc"
-    ACTION_DESC = "action:desc"
-    ACTOR_DISPLAY_NAME_ASC = "actor.display_name:asc"
-    ACTOR_DISPLAY_NAME_DESC = "actor.display_name:desc"
-    ACTOR_URI_ASC = "actor.uri:asc"
-    ACTOR_URI_DESC = "actor.uri:desc"
-    NAMESPACE_ASC = "namespace:asc"
-    NAMESPACE_DESC = "namespace:desc"
-    OCCURRED_AT_ASC = "occurred_at:asc"
-    OCCURRED_AT_DESC = "occurred_at:desc"
+    ACTION_ASC = 'action:asc'
+    ACTION_DESC = 'action:desc'
+    ACTOR_DISPLAY_NAME_ASC = 'actor.display_name:asc'
+    ACTOR_DISPLAY_NAME_DESC = 'actor.display_name:desc'
+    ACTOR_URI_ASC = 'actor.uri:asc'
+    ACTOR_URI_DESC = 'actor.uri:desc'
+    NAMESPACE_ASC = 'namespace:asc'
+    NAMESPACE_DESC = 'namespace:desc'
+    OCCURRED_AT_ASC = 'occurred_at:asc'
+    OCCURRED_AT_DESC = 'occurred_at:desc'
 
 
 @dataclasses.dataclass
-class ActivityLogQueryParams:
+class ActivityLogRequest:
     
     organization: str = dataclasses.field(metadata={'query_param': { 'field_name': 'organization', 'style': 'form', 'explode': True }})
     r"""Return activity log entries from the organization associated with this URI"""  
@@ -38,9 +38,9 @@ class ActivityLogQueryParams:
     count: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'count', 'style': 'form', 'explode': True }})
     r"""The number of rows to return"""  
     max_occurred_at: Optional[datetime] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'max_occurred_at', 'style': 'form', 'explode': True }})
-    r"""Include entries that occurred prior to this time (sample time format: \"2020-01-02T03:04:05.678Z\"). This time should use the UTC timezone."""  
+    r"""Include entries that occurred prior to this time (sample time format: \\"2020-01-02T03:04:05.678Z\\"). This time should use the UTC timezone."""  
     min_occurred_at: Optional[datetime] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'min_occurred_at', 'style': 'form', 'explode': True }})
-    r"""Include entries that occurred after this time (sample time format: \"2020-01-02T03:04:05.678Z\"). This time should use the UTC timezone."""  
+    r"""Include entries that occurred after this time (sample time format: \\"2020-01-02T03:04:05.678Z\\"). This time should use the UTC timezone."""  
     namespace: Optional[list[str]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'namespace', 'style': 'form', 'explode': False }})
     r"""The categories of the entries"""  
     page_token: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'page_token', 'style': 'form', 'explode': True }})
@@ -55,23 +55,16 @@ class ActivityLogQueryParams:
       - `-` - to omit specific terms from results. Example: `Added -User`
       - `()` - to allow specifying precedence during a search. Example: `(this + that) OR (person + place)`
       - `*` - to allow prefix searching. Example `*@other-website.com`
-    
     """  
     sort: Optional[list[ActivityLogSortEnum]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'sort', 'style': 'form', 'explode': False }})
     r"""Order results by the specified field and direction. List of {field}:{direction} values."""  
     
-
-@dataclasses.dataclass
-class ActivityLogRequest:
-    
-    query_params: ActivityLogQueryParams = dataclasses.field()  
-    
 class ActivityLog403ApplicationJSONMessageEnum(str, Enum):
-    PLEASE_UPGRADE_YOUR_CALENDLY_ACCOUNT_TO_ENTERPRISE_ = "Please upgrade your Calendly account to Enterprise."
-    YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = "You do not have permission to access this resource."
+    PLEASE_UPGRADE_YOUR_CALENDLY_ACCOUNT_TO_ENTERPRISE_ = 'Please upgrade your Calendly account to Enterprise.'
+    YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = 'You do not have permission to access this resource.'
 
 class ActivityLog403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -114,7 +107,7 @@ class ActivityLog200ApplicationJSON:
     total_count: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('total_count') }})
     r"""Total number of records based on search criteria"""  
     last_event_time: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('last_event_time'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
-    r"""The date and time of the newest entry (format: \"2020-01-02T03:04:05.678Z\") in the collection array."""  
+    r"""The date and time of the newest entry (format: \\"2020-01-02T03:04:05.678Z\\") in the collection array."""  
     
 
 @dataclasses.dataclass

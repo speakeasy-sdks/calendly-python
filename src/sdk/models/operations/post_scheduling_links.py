@@ -10,11 +10,11 @@ from typing import Optional
 
 class PostSchedulingLinksRequestBodyMaxEventCountEnum(str, Enum):
     r"""The max number of events that can be scheduled using this scheduling link."""
-    ONE = "1"
+    ONE = '1'
 
 class PostSchedulingLinksRequestBodyOwnerTypeEnum(str, Enum):
     r"""Resource type (currently, this is always EventType)"""
-    EVENT_TYPE = "EventType"
+    EVENT_TYPE = 'EventType'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -27,12 +27,6 @@ class PostSchedulingLinksRequestBody:
     r"""A link to the resource that owns this Scheduling Link (currently, this is always an Event Type)"""  
     owner_type: PostSchedulingLinksRequestBodyOwnerTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('owner_type') }})
     r"""Resource type (currently, this is always EventType)"""  
-    
-
-@dataclasses.dataclass
-class PostSchedulingLinksRequest:
-    
-    request: PostSchedulingLinksRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -54,7 +48,7 @@ class PostSchedulingLinksErrorResponse:
     
 class PostSchedulingLinks201ApplicationJSONResourceOwnerTypeEnum(str, Enum):
     r"""Resource type (currently, this is always EventType)"""
-    EVENT_TYPE = "EventType"
+    EVENT_TYPE = 'EventType'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -33,7 +33,7 @@ class Organizations:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.DeleteOrganizationsUUIDMembershipsPathParams, base_url, '/organization_memberships/{uuid}', request.path_params)
+        url = utils.generate_url(operations.DeleteOrganizationsUUIDMembershipsRequest, base_url, '/organization_memberships/{uuid}', request)
         
         
         client = self._security_client
@@ -70,7 +70,7 @@ class Organizations:
         
         url = base_url.removesuffix('/') + '/organization_memberships'
         
-        query_params = utils.get_query_params(operations.GetOrganizationMembershipsQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.GetOrganizationMembershipsRequest, request)
         
         client = self._security_client
         
@@ -100,7 +100,7 @@ class Organizations:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetOrganizationsOrgUUIDInvitationsUUIDPathParams, base_url, '/organizations/{org_uuid}/invitations/{uuid}', request.path_params)
+        url = utils.generate_url(operations.GetOrganizationsOrgUUIDInvitationsUUIDRequest, base_url, '/organizations/{org_uuid}/invitations/{uuid}', request)
         
         
         client = self._security_client
@@ -127,9 +127,9 @@ class Organizations:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetOrganizationsUUIDInvitationsPathParams, base_url, '/organizations/{uuid}/invitations', request.path_params)
+        url = utils.generate_url(operations.GetOrganizationsUUIDInvitationsRequest, base_url, '/organizations/{uuid}/invitations', request)
         
-        query_params = utils.get_query_params(operations.GetOrganizationsUUIDInvitationsQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.GetOrganizationsUUIDInvitationsRequest, request)
         
         client = self._security_client
         
@@ -155,7 +155,7 @@ class Organizations:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetOrganizationsUUIDMembershipsPathParams, base_url, '/organization_memberships/{uuid}', request.path_params)
+        url = utils.generate_url(operations.GetOrganizationsUUIDMembershipsRequest, base_url, '/organization_memberships/{uuid}', request)
         
         
         client = self._security_client
@@ -182,15 +182,14 @@ class Organizations:
 
     def post_organizations_uuid_invitations(self, request: operations.PostOrganizationsUUIDInvitationsRequest) -> operations.PostOrganizationsUUIDInvitationsResponse:
         r"""Invite User to Organization
-        	
         Invites a user to an organization.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.PostOrganizationsUUIDInvitationsPathParams, base_url, '/organizations/{uuid}/invitations', request.path_params)
+        url = utils.generate_url(operations.PostOrganizationsUUIDInvitationsRequest, base_url, '/organizations/{uuid}/invitations', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -228,7 +227,7 @@ class Organizations:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.RevokeUsersOrganizationInvitationPathParams, base_url, '/organizations/{org_uuid}/invitations/{uuid}', request.path_params)
+        url = utils.generate_url(operations.RevokeUsersOrganizationInvitationRequest, base_url, '/organizations/{org_uuid}/invitations/{uuid}', request)
         
         
         client = self._security_client

@@ -10,23 +10,18 @@ from enum import Enum
 from sdk import utils
 from typing import Optional
 
+class GetOrganizationsUUIDInvitationsStatusEnum(str, Enum):
+    r"""Indicates if the results should be filtered by status  (\\"pending\\", \\"accepted\\", or \\"declined\\")"""
+    PENDING = 'pending'
+    ACCEPTED = 'accepted'
+    DECLINED = 'declined'
+
 
 @dataclasses.dataclass
-class GetOrganizationsUUIDInvitationsPathParams:
+class GetOrganizationsUUIDInvitationsRequest:
     
     uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})
     r"""The organization's unique identifier"""  
-    
-class GetOrganizationsUUIDInvitationsStatusEnum(str, Enum):
-    r"""Indicates if the results should be filtered by status  (\"pending\", \"accepted\", or \"declined\")"""
-    PENDING = "pending"
-    ACCEPTED = "accepted"
-    DECLINED = "declined"
-
-
-@dataclasses.dataclass
-class GetOrganizationsUUIDInvitationsQueryParams:
-    
     count: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'count', 'style': 'form', 'explode': True }})
     r"""The number of rows to return"""  
     email: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'email', 'style': 'form', 'explode': True }})
@@ -36,14 +31,7 @@ class GetOrganizationsUUIDInvitationsQueryParams:
     sort: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'sort', 'style': 'form', 'explode': True }})
     r"""Order results by the field name and direction specified (ascending or descending). Returns multiple sets of results in a comma-separated list."""  
     status: Optional[GetOrganizationsUUIDInvitationsStatusEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'status', 'style': 'form', 'explode': True }})
-    r"""Indicates if the results should be filtered by status  (\"pending\", \"accepted\", or \"declined\")"""  
-    
-
-@dataclasses.dataclass
-class GetOrganizationsUUIDInvitationsRequest:
-    
-    path_params: GetOrganizationsUUIDInvitationsPathParams = dataclasses.field()  
-    query_params: GetOrganizationsUUIDInvitationsQueryParams = dataclasses.field()  
+    r"""Indicates if the results should be filtered by status  (\\"pending\\", \\"accepted\\", or \\"declined\\")"""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

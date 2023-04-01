@@ -17,23 +17,23 @@ from typing import Optional
 class PostSharesRequestBodyAvailabilityRuleRulesIntervals:
     
     from_: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('from'), 'exclude': lambda f: f is None }})
-    r"""Format: `\"hh:mm\"`"""  
+    r"""Format: `\\"hh:mm\\"`"""  
     to: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('to'), 'exclude': lambda f: f is None }})
-    r"""Format: `\"hh:mm\"`"""  
+    r"""Format: `\\"hh:mm\\"`"""  
     
 class PostSharesRequestBodyAvailabilityRuleRulesTypeEnum(str, Enum):
-    WDAY = "wday"
-    DATE = "date"
+    WDAY = 'wday'
+    DATE = 'date'
 
 class PostSharesRequestBodyAvailabilityRuleRulesWdayEnum(str, Enum):
     r"""is required when `type` is 'wday'"""
-    SUNDAY = "sunday"
-    MONDAY = "monday"
-    TUESDAY = "tuesday"
-    WEDNESDAY = "wednesday"
-    THURSDAY = "thursday"
-    FRIDAY = "friday"
-    SATURDAY = "saturday"
+    SUNDAY = 'sunday'
+    MONDAY = 'monday'
+    TUESDAY = 'tuesday'
+    WEDNESDAY = 'wednesday'
+    THURSDAY = 'thursday'
+    FRIDAY = 'friday'
+    SATURDAY = 'saturday'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -60,16 +60,16 @@ class PostSharesRequestBodyAvailabilityRule:
     r"""is required when an availability rule is provided"""  
     
 class PostSharesRequestBodyLocationConfigurationsKindEnum(str, Enum):
-    PHYSICAL = "physical"
-    ASK_INVITEE = "ask_invitee"
-    CUSTOM = "custom"
-    OUTBOUND_CALL = "outbound_call"
-    INBOUND_CALL = "inbound_call"
-    GOOGLE_CONFERENCE = "google_conference"
-    GOTOMEETING_CONFERENCE = "gotomeeting_conference"
-    MICROSOFT_TEAMS_CONFERENCE = "microsoft_teams_conference"
-    WEBEX_CONFERENCE = "webex_conference"
-    ZOOM_CONFERENCE = "zoom_conference"
+    PHYSICAL = 'physical'
+    ASK_INVITEE = 'ask_invitee'
+    CUSTOM = 'custom'
+    OUTBOUND_CALL = 'outbound_call'
+    INBOUND_CALL = 'inbound_call'
+    GOOGLE_CONFERENCE = 'google_conference'
+    GOTOMEETING_CONFERENCE = 'gotomeeting_conference'
+    MICROSOFT_TEAMS_CONFERENCE = 'microsoft_teams_conference'
+    WEBEX_CONFERENCE = 'webex_conference'
+    ZOOM_CONFERENCE = 'zoom_conference'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -77,7 +77,7 @@ class PostSharesRequestBodyLocationConfigurationsKindEnum(str, Enum):
 class PostSharesRequestBodyLocationConfigurations:
     
     additional_info: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additional_info'), 'exclude': lambda f: f is None }})
-    r"""is only supported when `kind` is 'physical' or 'inbound_call' """  
+    r"""is only supported when `kind` is 'physical' or 'inbound_call'"""  
     kind: Optional[PostSharesRequestBodyLocationConfigurationsKindEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('kind'), 'exclude': lambda f: f is None }})  
     location: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('location'), 'exclude': lambda f: f is None }})
     r"""is only supported when `kind` is 'physical', 'custom' or 'ask_invitee'"""  
@@ -86,10 +86,10 @@ class PostSharesRequestBodyLocationConfigurations:
     position: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('position'), 'exclude': lambda f: f is None }})  
     
 class PostSharesRequestBodyPeriodTypeEnum(str, Enum):
-    AVAILABLE_MOVING = "available_moving"
-    MOVING = "moving"
-    FIXED = "fixed"
-    UNLIMITED = "unlimited"
+    AVAILABLE_MOVING = 'available_moving'
+    MOVING = 'moving'
+    FIXED = 'fixed'
+    UNLIMITED = 'unlimited'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -114,12 +114,6 @@ class PostSharesRequestBody:
     r"""is required when `period_type` is 'fixed'
     Format: `YYYY-MM-DD`
     """  
-    
-
-@dataclasses.dataclass
-class PostSharesRequest:
-    
-    request: PostSharesRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

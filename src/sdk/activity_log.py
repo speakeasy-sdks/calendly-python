@@ -32,7 +32,7 @@ class ActivityLog:
         
         url = base_url.removesuffix('/') + '/activity_log_entries'
         
-        query_params = utils.get_query_params(operations.ActivityLogQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.ActivityLogRequest, request)
         
         client = self._security_client
         

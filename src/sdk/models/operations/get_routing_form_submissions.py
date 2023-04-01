@@ -11,7 +11,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetRoutingFormSubmissionsQueryParams:
+class GetRoutingFormSubmissionsRequest:
     
     form: str = dataclasses.field(metadata={'query_param': { 'field_name': 'form', 'style': 'form', 'explode': True }})
     r"""View routing form submissions associated with the routing form's URI."""  
@@ -21,12 +21,6 @@ class GetRoutingFormSubmissionsQueryParams:
     r"""The token to pass to get the next or previous portion of the collection"""  
     sort: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'sort', 'style': 'form', 'explode': True }})
     r"""Order results by the specified field and direction. Accepts comma-separated list of {field}:{direction} values. Supported fields are: created_at. Sort direction is specified as: asc, desc."""  
-    
-
-@dataclasses.dataclass
-class GetRoutingFormSubmissionsRequest:
-    
-    query_params: GetRoutingFormSubmissionsQueryParams = dataclasses.field()  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

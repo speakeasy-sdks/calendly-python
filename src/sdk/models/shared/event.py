@@ -34,9 +34,9 @@ class EventInviteesCounter:
     r"""Total invitees for an event, including invitees that have canceled"""  
     
 class EventStatusEnum(str, Enum):
-    r"""Indicates if the event is \"active\" or \"canceled\""""
-    ACTIVE = "active"
-    CANCELED = "canceled"
+    r"""Indicates if the event is \\"active\\" or \\"canceled\\" """
+    ACTIVE = 'active'
+    CANCELED = 'canceled'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -47,9 +47,9 @@ class Event:
     calendar_event: shared_legacycalendarevent.LegacyCalendarEvent = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('calendar_event') }})
     r"""Information about the calendar event from the calendar provider."""  
     created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The moment when the event was created (e.g. \"2020-01-02T03:04:05.678123Z\")"""  
+    r"""The moment when the event was created (e.g. \\"2020-01-02T03:04:05.678123Z\\")"""  
     end_time: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('end_time'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The moment the event was scheduled to end in UTC time (e.g. \"2020-01-02T03:04:05.678123Z\")"""  
+    r"""The moment the event was scheduled to end in UTC time (e.g. \\"2020-01-02T03:04:05.678123Z\\")"""  
     event_guests: list[shared_guest.Guest] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('event_guests') }})
     r"""Additional people added to an event by an invitee"""  
     event_memberships: list[EventEventMemberships] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('event_memberships') }})
@@ -62,11 +62,11 @@ class Event:
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
     r"""The event name"""  
     start_time: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('start_time'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The moment the event was scheduled to start in UTC time (e.g. \"2020-01-02T03:04:05.678123Z\")."""  
+    r"""The moment the event was scheduled to start in UTC time (e.g. \\"2020-01-02T03:04:05.678123Z\\")."""  
     status: EventStatusEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
-    r"""Indicates if the event is \"active\" or \"canceled\""""  
+    r"""Indicates if the event is \\"active\\" or \\"canceled\\" """  
     updated_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updated_at'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The moment when the event was last updated (e.g. \"2020-01-02T03:04:05.678123Z\")"""  
+    r"""The moment when the event was last updated (e.g. \\"2020-01-02T03:04:05.678123Z\\")"""  
     uri: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uri') }})
     r"""Canonical reference (unique identifier) for the resource"""  
     cancellation: Optional[shared_cancellation.Cancellation] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('cancellation'), 'exclude': lambda f: f is None }})

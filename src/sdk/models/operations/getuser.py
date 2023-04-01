@@ -10,16 +10,10 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetUserPathParams:
-    
-    uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})
-    r"""User unique identifier, or the constant \"me\" to reference the caller"""  
-    
-
-@dataclasses.dataclass
 class GetUserRequest:
     
-    path_params: GetUserPathParams = dataclasses.field()  
+    uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})
+    r"""User unique identifier, or the constant \\"me\\" to reference the caller"""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -8,7 +8,7 @@ from sdk import utils
 
 class InviteeSpecifiedLocationTypeEnum(str, Enum):
     r"""The event location selected by the invitee"""
-    ASK_INVITEE = "ask_invitee"
+    ASK_INVITEE = 'ask_invitee'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -29,7 +29,7 @@ class Availability:
         
         url = base_url.removesuffix('/') + '/user_availability_schedules'
         
-        query_params = utils.get_query_params(operations.GetUserAvailabilitySchedulesQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.GetUserAvailabilitySchedulesRequest, request)
         
         client = self._security_client
         
@@ -59,7 +59,7 @@ class Availability:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetUserAvailabilitySchedulesUUIDPathParams, base_url, '/user_availability_schedules/{uuid}', request.path_params)
+        url = utils.generate_url(operations.GetUserAvailabilitySchedulesUUIDRequest, base_url, '/user_availability_schedules/{uuid}', request)
         
         
         client = self._security_client
@@ -100,7 +100,7 @@ class Availability:
         
         url = base_url.removesuffix('/') + '/user_busy_times'
         
-        query_params = utils.get_query_params(operations.GetUserBusyTimesQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.GetUserBusyTimesRequest, request)
         
         client = self._security_client
         

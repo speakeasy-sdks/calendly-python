@@ -9,15 +9,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class DeleteInviteeNoShowPathParams:
-    
-    uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})  
-    
-
-@dataclasses.dataclass
 class DeleteInviteeNoShowRequest:
     
-    path_params: DeleteInviteeNoShowPathParams = dataclasses.field()  
+    uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

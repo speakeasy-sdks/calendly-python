@@ -8,7 +8,7 @@ from sdk import utils
 
 class InPersonMeetingTypeEnum(str, Enum):
     r"""Indicates that the event will be an in-person meeting."""
-    PHYSICAL = "physical"
+    PHYSICAL = 'physical'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -11,22 +11,16 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetScheduledEventsUUIDPathParams:
+class GetScheduledEventsUUIDRequest:
     
     uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})
     r"""The event's unique identifier"""  
     
-
-@dataclasses.dataclass
-class GetScheduledEventsUUIDRequest:
-    
-    path_params: GetScheduledEventsUUIDPathParams = dataclasses.field()  
-    
 class GetScheduledEventsUUID403ApplicationJSONMessageEnum(str, Enum):
-    YOU_ARE_NOT_ALLOWED_TO_VIEW_THIS_EVENT = "You are not allowed to view this event"
+    YOU_ARE_NOT_ALLOWED_TO_VIEW_THIS_EVENT = 'You are not allowed to view this event'
 
 class GetScheduledEventsUUID403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -8,7 +8,7 @@ from sdk import utils
 
 class CustomLocationTypeEnum(str, Enum):
     r"""The event location doesn't fall into a standard category defined by the event host (publisher)"""
-    CUSTOM = "custom"
+    CUSTOM = 'custom'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

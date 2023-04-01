@@ -10,14 +10,14 @@ from sdk import utils
 from typing import Optional
 
 class PostUsersUUIDWebhooksRequestBodyEventsEnum(str, Enum):
-    INVITEE_CANCELED = "invitee.canceled"
-    INVITEE_CREATED = "invitee.created"
-    ROUTING_FORM_SUBMISSION_CREATED = "routing_form_submission.created"
+    INVITEE_CANCELED = 'invitee.canceled'
+    INVITEE_CREATED = 'invitee.created'
+    ROUTING_FORM_SUBMISSION_CREATED = 'routing_form_submission.created'
 
 class PostUsersUUIDWebhooksRequestBodyScopeEnum(str, Enum):
-    r"""Indicates if the webhook subscription scope will be \"organization\" or \"user\""""
-    ORGANIZATION = "organization"
-    USER = "user"
+    r"""Indicates if the webhook subscription scope will be \\"organization\\" or \\"user\\" """
+    ORGANIZATION = 'organization'
+    USER = 'user'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -29,7 +29,7 @@ class PostUsersUUIDWebhooksRequestBody:
     organization: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('organization') }})
     r"""The unique reference to the organization that the webhook will be tied to."""  
     scope: PostUsersUUIDWebhooksRequestBodyScopeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('scope') }})
-    r"""Indicates if the webhook subscription scope will be \"organization\" or \"user\""""  
+    r"""Indicates if the webhook subscription scope will be \\"organization\\" or \\"user\\" """  
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     r"""The URL where you want to receive POST requests for events you are subscribed to."""  
     signing_key: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('signing_key'), 'exclude': lambda f: f is None }})
@@ -37,19 +37,13 @@ class PostUsersUUIDWebhooksRequestBody:
     user: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('user'), 'exclude': lambda f: f is None }})
     r"""The unique reference to the user that the webhook will be tied to."""  
     
-
-@dataclasses.dataclass
-class PostUsersUUIDWebhooksRequest:
-    
-    request: PostUsersUUIDWebhooksRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})  
-    
 class PostUsersUUIDWebhooks403ApplicationJSONMessageEnum(str, Enum):
-    PLEASE_UPGRADE_YOUR_CALENDLY_ACCOUNT_TO_PROFESSIONAL = "Please upgrade your Calendly account to Professional"
-    YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = "You do not have permission to access this resource."
-    YOU_DO_NOT_HAVE_PERMISSION = "You do not have permission"
+    PLEASE_UPGRADE_YOUR_CALENDLY_ACCOUNT_TO_PROFESSIONAL = 'Please upgrade your Calendly account to Professional'
+    YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = 'You do not have permission to access this resource.'
+    YOU_DO_NOT_HAVE_PERMISSION = 'You do not have permission'
 
 class PostUsersUUIDWebhooks403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

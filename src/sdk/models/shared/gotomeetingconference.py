@@ -19,14 +19,14 @@ class GotoMeetingConferenceData:
     
 class GotoMeetingConferenceStatusEnum(str, Enum):
     r"""Indicates the current status of the GoToMeeting conference"""
-    INITIATED = "initiated"
-    PROCESSING = "processing"
-    PUSHED = "pushed"
-    FAILED = "failed"
+    INITIATED = 'initiated'
+    PROCESSING = 'processing'
+    PUSHED = 'pushed'
+    FAILED = 'failed'
 
 class GotoMeetingConferenceTypeEnum(str, Enum):
     r"""The event location is a GoToMeeting conference"""
-    GOTOMEETING = "gotomeeting"
+    GOTOMEETING = 'gotomeeting'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

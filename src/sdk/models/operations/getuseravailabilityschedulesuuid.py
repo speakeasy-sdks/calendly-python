@@ -11,22 +11,16 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetUserAvailabilitySchedulesUUIDPathParams:
+class GetUserAvailabilitySchedulesUUIDRequest:
     
     uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})
     r"""The UUID of the availability schedule."""  
     
-
-@dataclasses.dataclass
-class GetUserAvailabilitySchedulesUUIDRequest:
-    
-    path_params: GetUserAvailabilitySchedulesUUIDPathParams = dataclasses.field()  
-    
 class GetUserAvailabilitySchedulesUUID403ApplicationJSONMessageEnum(str, Enum):
-    THIS_USER_IS_NOT_IN_YOUR_ORGANIZATION = "This user is not in your organization"
+    THIS_USER_IS_NOT_IN_YOUR_ORGANIZATION = 'This user is not in your organization'
 
 class GetUserAvailabilitySchedulesUUID403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

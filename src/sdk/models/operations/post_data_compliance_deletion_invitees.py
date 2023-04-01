@@ -16,12 +16,6 @@ class PostDataComplianceDeletionInviteesRequestBody:
     emails: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('emails') }})  
     
 
-@dataclasses.dataclass
-class PostDataComplianceDeletionInviteesRequest:
-    
-    request: PostDataComplianceDeletionInviteesRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})  
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PostDataComplianceDeletionInviteesErrorResponseDetails:

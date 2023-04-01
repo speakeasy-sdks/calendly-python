@@ -21,7 +21,7 @@ class Entry:
     fully_qualified_name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fully_qualified_name') }})  
     namespace: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('namespace') }})  
     occurred_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('occurred_at'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The date and time of the entry (format: \"2020-01-02T03:04:05.678Z\")."""  
+    r"""The date and time of the entry (format: \\"2020-01-02T03:04:05.678Z\\")."""  
     organization: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('organization') }})  
     uri: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uri') }})  
     actor: Optional[shared_actor.Actor] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('actor'), 'exclude': lambda f: f is None }})
@@ -62,6 +62,5 @@ class Entry:
     }
     ```
     </details>
-    
     """  
     

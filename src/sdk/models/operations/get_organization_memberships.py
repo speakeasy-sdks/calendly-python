@@ -12,7 +12,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetOrganizationMembershipsQueryParams:
+class GetOrganizationMembershipsRequest:
     
     count: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'count', 'style': 'form', 'explode': True }})
     r"""The number of rows to return"""  
@@ -24,12 +24,6 @@ class GetOrganizationMembershipsQueryParams:
     r"""The token to pass to get the next or previous portion of the collection"""  
     user: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'user', 'style': 'form', 'explode': True }})
     r"""Indicates if the results should be filtered by user"""  
-    
-
-@dataclasses.dataclass
-class GetOrganizationMembershipsRequest:
-    
-    query_params: GetOrganizationMembershipsQueryParams = dataclasses.field()  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -7,8 +7,8 @@ from enum import Enum
 from sdk import utils
 
 class CancellationCancelerTypeEnum(str, Enum):
-    HOST = "host"
-    INVITEE = "invitee"
+    HOST = 'host'
+    INVITEE = 'invitee'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

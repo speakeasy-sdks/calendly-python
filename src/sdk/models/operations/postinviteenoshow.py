@@ -16,12 +16,6 @@ class PostInviteeNoShowRequestBody:
     invitee: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('invitee'), 'exclude': lambda f: f is None }})  
     
 
-@dataclasses.dataclass
-class PostInviteeNoShowRequest:
-    
-    request: PostInviteeNoShowRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})  
-    
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class PostInviteeNoShowErrorResponseDetails:

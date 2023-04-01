@@ -11,16 +11,10 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetOrganizationsUUIDMembershipsPathParams:
+class GetOrganizationsUUIDMembershipsRequest:
     
     uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})
     r"""The organization membership's unique identifier"""  
-    
-
-@dataclasses.dataclass
-class GetOrganizationsUUIDMembershipsRequest:
-    
-    path_params: GetOrganizationsUUIDMembershipsPathParams = dataclasses.field()  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

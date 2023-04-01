@@ -10,15 +10,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetInviteeNoShowPathParams:
-    
-    uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})  
-    
-
-@dataclasses.dataclass
 class GetInviteeNoShowRequest:
     
-    path_params: GetInviteeNoShowPathParams = dataclasses.field()  
+    uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

@@ -11,26 +11,20 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class RevokeUsersOrganizationInvitationPathParams:
+class RevokeUsersOrganizationInvitationRequest:
     
     org_uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'org_uuid', 'style': 'simple', 'explode': False }})
     r"""The organization’s unique identifier"""  
     uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})
     r"""The organization invitation's unique identifier"""  
     
-
-@dataclasses.dataclass
-class RevokeUsersOrganizationInvitationRequest:
-    
-    path_params: RevokeUsersOrganizationInvitationPathParams = dataclasses.field()  
-    
 class RevokeUsersOrganizationInvitation403ApplicationJSONMessageEnum(str, Enum):
-    YOU_CANNOT_PERFORM_THIS_ACTION_FOR_AN_ORGANIZATION_WITH_SCIM_ENABLED_ = "You cannot perform this action for an organization with SCIM enabled."
-    YOU_DO_NOT_HAVE_PERMISSION = "You do not have permission"
-    YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = "You do not have permission to access this resource."
+    YOU_CANNOT_PERFORM_THIS_ACTION_FOR_AN_ORGANIZATION_WITH_SCIM_ENABLED_ = 'You cannot perform this action for an organization with SCIM enabled.'
+    YOU_DO_NOT_HAVE_PERMISSION = 'You do not have permission'
+    YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = 'You do not have permission to access this resource.'
 
 class RevokeUsersOrganizationInvitation403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

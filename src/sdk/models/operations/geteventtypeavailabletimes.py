@@ -10,7 +10,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetEventTypeAvailableTimesQueryParams:
+class GetEventTypeAvailableTimesRequest:
     
     end_time: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'end_time', 'style': 'form', 'explode': True }})
     r"""End time of the requested availability range."""  
@@ -18,12 +18,6 @@ class GetEventTypeAvailableTimesQueryParams:
     r"""The uri associated with the event type"""  
     start_time: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'start_time', 'style': 'form', 'explode': True }})
     r"""Start time of the requested availability range."""  
-    
-
-@dataclasses.dataclass
-class GetEventTypeAvailableTimesRequest:
-    
-    query_params: GetEventTypeAvailableTimesQueryParams = dataclasses.field()  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

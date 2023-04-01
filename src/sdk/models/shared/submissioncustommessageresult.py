@@ -7,8 +7,8 @@ from enum import Enum
 from sdk import utils
 
 class SubmissionCustomMessageResultTypeEnum(str, Enum):
-    r"""Indicates if the routing form submission resulted in a custom \"thank you\" message."""
-    CUSTOM_MESSAGE = "custom_message"
+    r"""Indicates if the routing form submission resulted in a custom \\"thank you\\" message."""
+    CUSTOM_MESSAGE = 'custom_message'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -28,7 +28,7 @@ class SubmissionCustomMessageResult:
     r"""Information about the custom message Routing Form Submission result."""
     
     type: SubmissionCustomMessageResultTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    r"""Indicates if the routing form submission resulted in a custom \"thank you\" message."""  
+    r"""Indicates if the routing form submission resulted in a custom \\"thank you\\" message."""  
     value: SubmissionCustomMessageResultValue = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value') }})
     r"""Contains an object with custom message headline and body."""  
     

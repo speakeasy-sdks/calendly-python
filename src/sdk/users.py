@@ -54,7 +54,7 @@ class Users:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetUserPathParams, base_url, '/users/{uuid}', request.path_params)
+        url = utils.generate_url(operations.GetUserRequest, base_url, '/users/{uuid}', request)
         
         
         client = self._security_client

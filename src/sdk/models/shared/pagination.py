@@ -13,11 +13,11 @@ class Pagination:
     count: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('count') }})
     r"""The number of rows to return"""  
     next_page: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next_page') }})
-    r"""URI to return the next page of an ordered list (\"null\" indicates no additional results are available)"""  
+    r"""URI to return the next page of an ordered list (\\"null\\" indicates no additional results are available)"""  
     next_page_token: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('next_page_token') }})
-    r"""Token to return the next page of an ordered list (\"null\" indicates no additional results are available)"""  
+    r"""Token to return the next page of an ordered list (\\"null\\" indicates no additional results are available)"""  
     previous_page: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous_page') }})
-    r"""URI to return the previous page of an ordered list (\"null\" indicates no additional results are available)"""  
+    r"""URI to return the previous page of an ordered list (\\"null\\" indicates no additional results are available)"""  
     previous_page_token: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('previous_page_token') }})
-    r"""Token to return the previous page of an ordered list (\"null\" indicates no additional results are available)"""  
+    r"""Token to return the previous page of an ordered list (\\"null\\" indicates no additional results are available)"""  
     

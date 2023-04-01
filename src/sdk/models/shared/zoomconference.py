@@ -50,14 +50,14 @@ class ZoomConferenceData:
     
 class ZoomConferenceStatusEnum(str, Enum):
     r"""Indicates the current status of the Zoom conference"""
-    INITIATED = "initiated"
-    PROCESSING = "processing"
-    PUSHED = "pushed"
-    FAILED = "failed"
+    INITIATED = 'initiated'
+    PROCESSING = 'processing'
+    PUSHED = 'pushed'
+    FAILED = 'failed'
 
 class ZoomConferenceTypeEnum(str, Enum):
     r"""The event location is a Zoom conference"""
-    ZOOM_CONFERENCE = "zoom_conference"
+    ZOOM_CONFERENCE = 'zoom_conference'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

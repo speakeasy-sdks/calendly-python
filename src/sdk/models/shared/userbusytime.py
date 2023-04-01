@@ -20,8 +20,8 @@ class UserBusyTimeEvent:
     
 class UserBusyTimeTypeEnum(str, Enum):
     r"""Indicates whether the scheduled event is internal or external"""
-    CALENDLY = "calendly"
-    EXTERNAL = "external"
+    CALENDLY = 'calendly'
+    EXTERNAL = 'external'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -36,8 +36,8 @@ class UserBusyTime:
     type: UserBusyTimeTypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""Indicates whether the scheduled event is internal or external"""  
     buffered_end_time: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('buffered_end_time'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
-    r"""The end time of the calendly event, as calculated by any \"after\" buffer set by the user"""  
+    r"""The end time of the calendly event, as calculated by any \\"after\\" buffer set by the user"""  
     buffered_start_time: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('buffered_start_time'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
-    r"""The start time of the calendly event, as calculated by any \"before\" buffer set by the user"""  
+    r"""The start time of the calendly event, as calculated by any \\"before\\" buffer set by the user"""  
     event: Optional[UserBusyTimeEvent] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('event'), 'exclude': lambda f: f is None }})  
     

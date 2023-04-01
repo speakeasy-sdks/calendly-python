@@ -29,7 +29,7 @@ class RoutingForms:
         
         url = base_url.removesuffix('/') + '/routing_form_submissions'
         
-        query_params = utils.get_query_params(operations.GetRoutingFormSubmissionsQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.GetRoutingFormSubmissionsRequest, request)
         
         client = self._security_client
         
@@ -55,7 +55,7 @@ class RoutingForms:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetRoutingFormSubmissionsUUIDPathParams, base_url, '/routing_form_submissions/{uuid}', request.path_params)
+        url = utils.generate_url(operations.GetRoutingFormSubmissionsUUIDRequest, base_url, '/routing_form_submissions/{uuid}', request)
         
         
         client = self._security_client
@@ -84,7 +84,7 @@ class RoutingForms:
         
         url = base_url.removesuffix('/') + '/routing_forms'
         
-        query_params = utils.get_query_params(operations.GetRoutingFormsQueryParams, request.query_params)
+        query_params = utils.get_query_params(operations.GetRoutingFormsRequest, request)
         
         client = self._security_client
         
@@ -110,7 +110,7 @@ class RoutingForms:
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.GetRoutingFormsUUIDPathParams, base_url, '/routing_forms/{uuid}', request.path_params)
+        url = utils.generate_url(operations.GetRoutingFormsUUIDRequest, base_url, '/routing_forms/{uuid}', request)
         
         
         client = self._security_client

@@ -12,7 +12,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetEventTypesQueryParams:
+class GetEventTypesRequest:
     
     active: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'active', 'style': 'form', 'explode': True }})
     r"""Return only active event types if true, only inactive if false, or all event types if this parameter is omitted."""  
@@ -32,19 +32,13 @@ class GetEventTypesQueryParams:
     user: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'user', 'style': 'form', 'explode': True }})
     r"""View available personal, team, and organization event types associated with the user's URI."""  
     
-
-@dataclasses.dataclass
-class GetEventTypesRequest:
-    
-    query_params: GetEventTypesQueryParams = dataclasses.field()  
-    
 class GetEventTypes403ApplicationJSONMessageEnum(str, Enum):
-    THIS_USER_IS_NOT_IN_YOUR_ORGANIZATION = "This user is not in your organization"
-    YOU_DO_NOT_HAVE_PERMISSION = "You do not have permission"
-    YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = "You do not have permission to access this resource."
+    THIS_USER_IS_NOT_IN_YOUR_ORGANIZATION = 'This user is not in your organization'
+    YOU_DO_NOT_HAVE_PERMISSION = 'You do not have permission'
+    YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = 'You do not have permission to access this resource.'
 
 class GetEventTypes403ApplicationJSONTitleEnum(str, Enum):
-    PERMISSION_DENIED = "Permission Denied"
+    PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

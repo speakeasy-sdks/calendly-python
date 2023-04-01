@@ -10,15 +10,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetRoutingFormsUUIDPathParams:
-    
-    uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})  
-    
-
-@dataclasses.dataclass
 class GetRoutingFormsUUIDRequest:
     
-    path_params: GetRoutingFormsUUIDPathParams = dataclasses.field()  
+    uuid: str = dataclasses.field(metadata={'path_param': { 'field_name': 'uuid', 'style': 'simple', 'explode': False }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

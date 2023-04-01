@@ -11,7 +11,7 @@ from typing import Optional
 
 class ShareSchedulingLinksOwnerTypeEnum(str, Enum):
     r"""Resource type (currently, this is always EventType)"""
-    EVENT_TYPE = "EventType"
+    EVENT_TYPE = 'EventType'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -31,22 +31,22 @@ class ShareSchedulingLinks:
 class ShareShareOverrideAvailabilityRuleRulesIntervals:
     
     from_: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('from'), 'exclude': lambda f: f is None }})
-    r"""Format: `\"hh:mm\"`"""  
+    r"""Format: `\\"hh:mm\\"`"""  
     to: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('to'), 'exclude': lambda f: f is None }})
-    r"""Format: `\"hh:mm\"`"""  
+    r"""Format: `\\"hh:mm\\"`"""  
     
 class ShareShareOverrideAvailabilityRuleRulesTypeEnum(str, Enum):
-    WDAY = "wday"
-    DATE = "date"
+    WDAY = 'wday'
+    DATE = 'date'
 
 class ShareShareOverrideAvailabilityRuleRulesWdayEnum(str, Enum):
-    SUNDAY = "sunday"
-    MONDAY = "monday"
-    TUESDAY = "tuesday"
-    WEDNESDAY = "wednesday"
-    THURSDAY = "thursday"
-    FRIDAY = "friday"
-    SATURDAY = "saturday"
+    SUNDAY = 'sunday'
+    MONDAY = 'monday'
+    TUESDAY = 'tuesday'
+    WEDNESDAY = 'wednesday'
+    THURSDAY = 'thursday'
+    FRIDAY = 'friday'
+    SATURDAY = 'saturday'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -68,15 +68,15 @@ class ShareShareOverrideAvailabilityRule:
     timezone: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timezone') }})  
     
 class ShareShareOverrideLocationConfigurationsKindEnum(str, Enum):
-    PHYSICAL = "physical"
-    ASK_INVITEE = "ask_invitee"
-    CUSTOM = "custom"
-    OUTBOUND_CALL = "outbound_call"
-    INBOUND_CALL = "inbound_call"
-    GOOGLE_CONFERENCE = "google_conference"
-    GOTOMEETING_CONFERENCE = "gotomeeting_conference"
-    MICROSOFT_TEAMS_CONFERENCE = "microsoft_teams_conference"
-    ZOOM_CONFERENCE = "zoom_conference"
+    PHYSICAL = 'physical'
+    ASK_INVITEE = 'ask_invitee'
+    CUSTOM = 'custom'
+    OUTBOUND_CALL = 'outbound_call'
+    INBOUND_CALL = 'inbound_call'
+    GOOGLE_CONFERENCE = 'google_conference'
+    GOTOMEETING_CONFERENCE = 'gotomeeting_conference'
+    MICROSOFT_TEAMS_CONFERENCE = 'microsoft_teams_conference'
+    ZOOM_CONFERENCE = 'zoom_conference'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -90,10 +90,10 @@ class ShareShareOverrideLocationConfigurations:
     position: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('position'), 'exclude': lambda f: f is None }})  
     
 class ShareShareOverridePeriodTypeEnum(str, Enum):
-    AVAILABLE_MOVING = "available_moving"
-    MOVING = "moving"
-    FIXED = "fixed"
-    UNLIMITED = "unlimited"
+    AVAILABLE_MOVING = 'available_moving'
+    MOVING = 'moving'
+    FIXED = 'fixed'
+    UNLIMITED = 'unlimited'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

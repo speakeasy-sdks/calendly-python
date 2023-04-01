@@ -8,11 +8,11 @@ from sdk import utils
 
 class LegacyCalendarEventKindEnum(str, Enum):
     r"""Indicates the calendar provider the event belongs to."""
-    EXCHANGE = "exchange"
-    GOOGLE = "google"
-    ICLOUD = "icloud"
-    OUTLOOK = "outlook"
-    OUTLOOK_DESKTOP = "outlook_desktop"
+    EXCHANGE = 'exchange'
+    GOOGLE = 'google'
+    ICLOUD = 'icloud'
+    OUTLOOK = 'outlook'
+    OUTLOOK_DESKTOP = 'outlook_desktop'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

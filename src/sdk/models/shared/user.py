@@ -17,7 +17,7 @@ class User:
     avatar_url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('avatar_url') }})
     r"""The URL of the user's avatar (image)"""  
     created_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The moment when the user's record was created (e.g. \"2020-01-02T03:04:05.678123Z\")"""  
+    r"""The moment when the user's record was created (e.g. \\"2020-01-02T03:04:05.678123Z\\")"""  
     current_organization: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('current_organization') }})
     r"""A unique reference to the user's current organization"""  
     email: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email') }})
@@ -31,7 +31,7 @@ class User:
     timezone: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('timezone') }})
     r"""The time zone to use when presenting time to the user"""  
     updated_at: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updated_at'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
-    r"""The moment when the user's record was last updated (e.g. \"2020-01-02T03:04:05.678123Z\")"""  
+    r"""The moment when the user's record was last updated (e.g. \\"2020-01-02T03:04:05.678123Z\\")"""  
     uri: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uri') }})
     r"""Canonical reference (unique identifier) for the user"""  
     

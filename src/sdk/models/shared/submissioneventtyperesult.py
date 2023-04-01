@@ -8,7 +8,7 @@ from sdk import utils
 
 class SubmissionEventTypeResultTypeEnum(str, Enum):
     r"""Indicates that the routing form submission resulted in a redirect to an event type booking page."""
-    EVENT_TYPE = "event_type"
+    EVENT_TYPE = 'event_type'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
