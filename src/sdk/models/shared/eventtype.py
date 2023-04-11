@@ -32,6 +32,7 @@ class EventTypePoolingTypeEnum(str, Enum):
     r"""Indicates if the event type is \\"round robin\\" (alternates between hosts) or \\"collective\\" (invitees pick a time when all participants are available) or \\"null\\" (the event type doesn’t consider the availability of a group participants)"""
     ROUND_ROBIN = 'round_robin'
     COLLECTIVE = 'collective'
+    NULL = 'null'
 
 class EventTypeTypeEnum(str, Enum):
     r"""Indicates if the event type is \\"AdhocEventType\\" (ad hoc event) or \\"StandardEventType\\" (standard event type)"""

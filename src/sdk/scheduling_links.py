@@ -21,7 +21,7 @@ class SchedulingLinks:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def post_scheduling_links(self, request: operations.PostSchedulingLinksRequestBody) -> operations.PostSchedulingLinksResponse:
+    def create(self, request: operations.PostSchedulingLinksRequestBody) -> operations.PostSchedulingLinksResponse:
         r"""Create Single-Use Scheduling Link
         Creates a single-use scheduling link.
         """

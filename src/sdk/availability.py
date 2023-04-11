@@ -21,39 +21,7 @@ class Availability:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_user_availability_schedules(self, request: operations.GetUserAvailabilitySchedulesRequest) -> operations.GetUserAvailabilitySchedulesResponse:
-        r"""List User Availability Schedules
-        Returns the availability schedules of the given user.
-        """
-        base_url = self._server_url
-        
-        url = base_url.removesuffix('/') + '/user_availability_schedules'
-        
-        query_params = utils.get_query_params(operations.GetUserAvailabilitySchedulesRequest, request)
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url, params=query_params)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetUserAvailabilitySchedulesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetUserAvailabilitySchedules200ApplicationJSON])
-                res.get_user_availability_schedules_200_application_json_object = out
-        elif http_res.status_code in [400, 401, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetUserAvailabilitySchedulesErrorResponse])
-                res.error_response = out
-        elif http_res.status_code == 403:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetUserAvailabilitySchedules403ApplicationJSON])
-                res.get_user_availability_schedules_403_application_json_object = out
-
-        return res
-
-    def get_user_availability_schedules_uuid(self, request: operations.GetUserAvailabilitySchedulesUUIDRequest) -> operations.GetUserAvailabilitySchedulesUUIDResponse:
+    def get(self, request: operations.GetUserAvailabilitySchedulesUUIDRequest) -> operations.GetUserAvailabilitySchedulesUUIDResponse:
         r"""Get User Availability Schedule
         This will return the availability schedule of the given UUID.
         """
@@ -86,7 +54,39 @@ class Availability:
 
         return res
 
-    def get_user_busy_times(self, request: operations.GetUserBusyTimesRequest) -> operations.GetUserBusyTimesResponse:
+    def get_availability(self, request: operations.GetUserAvailabilitySchedulesRequest) -> operations.GetUserAvailabilitySchedulesResponse:
+        r"""List User Availability Schedules
+        Returns the availability schedules of the given user.
+        """
+        base_url = self._server_url
+        
+        url = base_url.removesuffix('/') + '/user_availability_schedules'
+        
+        query_params = utils.get_query_params(operations.GetUserAvailabilitySchedulesRequest, request)
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetUserAvailabilitySchedulesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetUserAvailabilitySchedules200ApplicationJSON])
+                res.get_user_availability_schedules_200_application_json_object = out
+        elif http_res.status_code in [400, 401, 404, 500]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetUserAvailabilitySchedulesErrorResponse])
+                res.error_response = out
+        elif http_res.status_code == 403:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetUserAvailabilitySchedules403ApplicationJSON])
+                res.get_user_availability_schedules_403_application_json_object = out
+
+        return res
+
+    def get_busy_times(self, request: operations.GetUserBusyTimesRequest) -> operations.GetUserBusyTimesResponse:
         r"""List User Busy Times
         Returns an ascending list of user internal and external scheduled events within a specified date range.
         

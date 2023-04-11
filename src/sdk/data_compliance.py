@@ -21,7 +21,7 @@ class DataCompliance:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def post_data_compliance_deletion_events(self, request: operations.PostDataComplianceDeletionEventsRequestBody) -> operations.PostDataComplianceDeletionEventsResponse:
+    def create_deletion_event(self, request: operations.PostDataComplianceDeletionEventsRequestBody) -> operations.PostDataComplianceDeletionEventsResponse:
         r"""Delete Scheduled Event Data
         <!-- theme: info -->
           > This endpoint requires an <strong>Enterprise</strong> subscription.
@@ -63,7 +63,7 @@ class DataCompliance:
 
         return res
 
-    def post_data_compliance_deletion_invitees(self, request: operations.PostDataComplianceDeletionInviteesRequestBody) -> operations.PostDataComplianceDeletionInviteesResponse:
+    def delete_invitee_data(self, request: operations.PostDataComplianceDeletionInviteesRequestBody) -> operations.PostDataComplianceDeletionInviteesResponse:
         r"""Delete Invitee Data
         <!-- theme: info -->
           > This endpoint requires an <strong>Enterprise</strong> subscription.

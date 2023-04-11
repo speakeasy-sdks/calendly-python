@@ -3,29 +3,32 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import errorresponse as shared_errorresponse
+from ..shared import organizationmembership as shared_organizationmembership
 from ..shared import pagination as shared_pagination
-from ..shared import routingform as shared_routingform
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional
 
 
 @dataclasses.dataclass
-class GetRoutingFormsRequest:
+class ListOrganizationMembershipsRequest:
     
-    organization: str = dataclasses.field(metadata={'query_param': { 'field_name': 'organization', 'style': 'form', 'explode': True }})
-    r"""View organization routing forms associated with the organization's URI."""  
     count: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'count', 'style': 'form', 'explode': True }})
     r"""The number of rows to return"""  
+    email: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'email', 'style': 'form', 'explode': True }})
+    r"""Indicates if the results should be filtered by email address"""  
+    organization: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'organization', 'style': 'form', 'explode': True }})
+    r"""Indicates if the results should be filtered by organization"""  
     page_token: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'page_token', 'style': 'form', 'explode': True }})
     r"""The token to pass to get the next or previous portion of the collection"""  
-    sort: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'sort', 'style': 'form', 'explode': True }})
-    r"""Order results by the specified field and direction. Accepts comma-separated list of {field}:{direction} values. Supported fields are: created_at. Sort direction is specified as: asc, desc."""  
+    user: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'user', 'style': 'form', 'explode': True }})
+    r"""Indicates if the results should be filtered by user"""  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetRoutingFormsErrorResponseDetails:
+class ListOrganizationMembershipsErrorResponseDetails:
     
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
     parameter: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('parameter'), 'exclude': lambda f: f is None }})  
@@ -33,31 +36,33 @@ class GetRoutingFormsErrorResponseDetails:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetRoutingFormsErrorResponse:
+class ListOrganizationMembershipsErrorResponse:
     r"""Error Object"""
     
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
     title: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title') }})  
-    details: Optional[list[GetRoutingFormsErrorResponseDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})  
+    details: Optional[list[ListOrganizationMembershipsErrorResponseDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetRoutingForms200ApplicationJSON:
-    r"""OK"""
+class ListOrganizationMemberships200ApplicationJSON:
+    r"""Service response"""
     
-    collection: list[shared_routingform.RoutingForm] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('collection') }})  
+    collection: list[shared_organizationmembership.OrganizationMembership] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('collection') }})  
     pagination: shared_pagination.Pagination = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('pagination') }})  
     
 
 @dataclasses.dataclass
-class GetRoutingFormsResponse:
+class ListOrganizationMembershipsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    error_response: Optional[GetRoutingFormsErrorResponse] = dataclasses.field(default=None)
+    error_response: Optional[ListOrganizationMembershipsErrorResponse] = dataclasses.field(default=None)
     r"""Request is not valid"""  
-    get_routing_forms_200_application_json_object: Optional[GetRoutingForms200ApplicationJSON] = dataclasses.field(default=None)
+    error_response1: Optional[shared_errorresponse.ErrorResponse] = dataclasses.field(default=None)
+    r"""Caller not authorized to perform this action"""  
+    list_organization_memberships_200_application_json_object: Optional[ListOrganizationMemberships200ApplicationJSON] = dataclasses.field(default=None)
     r"""OK"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

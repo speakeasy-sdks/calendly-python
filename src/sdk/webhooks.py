@@ -21,91 +21,7 @@ class Webhooks:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def delete_users_user_uuid_webhooks_webhook_uuid(self, request: operations.DeleteUsersUserUUIDWebhooksWebhookUUIDRequest) -> operations.DeleteUsersUserUUIDWebhooksWebhookUUIDResponse:
-        r"""Delete Webhook Subscription
-        Delete a Webhook Subscription.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.DeleteUsersUserUUIDWebhooksWebhookUUIDRequest, base_url, '/webhook_subscriptions/{webhook_uuid}', request)
-        
-        
-        client = self._security_client
-        
-        http_res = client.request('DELETE', url)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.DeleteUsersUserUUIDWebhooksWebhookUUIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 204:
-            pass
-        elif http_res.status_code in [401, 403, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteUsersUserUUIDWebhooksWebhookUUIDErrorResponse])
-                res.error_response = out
-
-        return res
-
-    def get_users_user_uuid_webhooks_webhook_uuid(self, request: operations.GetUsersUserUUIDWebhooksWebhookUUIDRequest) -> operations.GetUsersUserUUIDWebhooksWebhookUUIDResponse:
-        r"""Get Webhook Subscription
-        Get a specified Webhook Subscription.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetUsersUserUUIDWebhooksWebhookUUIDRequest, base_url, '/webhook_subscriptions/{webhook_uuid}', request)
-        
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetUsersUserUUIDWebhooksWebhookUUIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetUsersUserUUIDWebhooksWebhookUUID200ApplicationJSON])
-                res.get_users_user_uuid_webhooks_webhook_uuid_200_application_json_object = out
-        elif http_res.status_code in [401, 403, 404]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetUsersUserUUIDWebhooksWebhookUUIDErrorResponse])
-                res.error_response = out
-
-        return res
-
-    def get_webhooks(self, request: operations.GetWebhooksRequest) -> operations.GetWebhooksResponse:
-        r"""List Webhook Subscriptions
-        Get a list of Webhook Subscriptions for a specified Organization or User.
-        """
-        base_url = self._server_url
-        
-        url = base_url.removesuffix('/') + '/webhook_subscriptions'
-        
-        query_params = utils.get_query_params(operations.GetWebhooksRequest, request)
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url, params=query_params)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetWebhooksResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetWebhooks200ApplicationJSON])
-                res.get_webhooks_200_application_json_object = out
-        elif http_res.status_code in [400, 401, 404]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetWebhooksErrorResponse])
-                res.error_response = out
-        elif http_res.status_code == 403:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetWebhooks403ApplicationJSON])
-                res.get_webhooks_403_application_json_object = out
-
-        return res
-
-    def post_users_uuid_webhooks(self, request: operations.PostUsersUUIDWebhooksRequestBody) -> operations.PostUsersUUIDWebhooksResponse:
+    def create(self, request: operations.PostUsersUUIDWebhooksRequestBody) -> operations.PostUsersUUIDWebhooksResponse:
         r"""Create Webhook Subscription
         Create a Webhook Subscription for an Organization or User.
         
@@ -148,6 +64,90 @@ class Webhooks:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.PostUsersUUIDWebhooks403ApplicationJSON])
                 res.post_users_uuid_webhooks_403_application_json_object = out
+
+        return res
+
+    def delete(self, request: operations.DeleteUsersUserUUIDWebhooksWebhookUUIDRequest) -> operations.DeleteUsersUserUUIDWebhooksWebhookUUIDResponse:
+        r"""Delete Webhook Subscription
+        Delete a Webhook Subscription.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.DeleteUsersUserUUIDWebhooksWebhookUUIDRequest, base_url, '/webhook_subscriptions/{webhook_uuid}', request)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('DELETE', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.DeleteUsersUserUUIDWebhooksWebhookUUIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 204:
+            pass
+        elif http_res.status_code in [401, 403, 404, 500]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteUsersUserUUIDWebhooksWebhookUUIDErrorResponse])
+                res.error_response = out
+
+        return res
+
+    def get(self, request: operations.GetUsersUserUUIDWebhooksWebhookUUIDRequest) -> operations.GetUsersUserUUIDWebhooksWebhookUUIDResponse:
+        r"""Get Webhook Subscription
+        Get a specified Webhook Subscription.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetUsersUserUUIDWebhooksWebhookUUIDRequest, base_url, '/webhook_subscriptions/{webhook_uuid}', request)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetUsersUserUUIDWebhooksWebhookUUIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetUsersUserUUIDWebhooksWebhookUUID200ApplicationJSON])
+                res.get_users_user_uuid_webhooks_webhook_uuid_200_application_json_object = out
+        elif http_res.status_code in [401, 403, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetUsersUserUUIDWebhooksWebhookUUIDErrorResponse])
+                res.error_response = out
+
+        return res
+
+    def list(self, request: operations.ListWebhooksRequest) -> operations.ListWebhooksResponse:
+        r"""List Webhook Subscriptions
+        Get a list of Webhook Subscriptions for a specified Organization or User.
+        """
+        base_url = self._server_url
+        
+        url = base_url.removesuffix('/') + '/webhook_subscriptions'
+        
+        query_params = utils.get_query_params(operations.ListWebhooksRequest, request)
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListWebhooksResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListWebhooks200ApplicationJSON])
+                res.list_webhooks_200_application_json_object = out
+        elif http_res.status_code in [400, 401, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListWebhooksErrorResponse])
+                res.error_response = out
+        elif http_res.status_code == 403:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListWebhooks403ApplicationJSON])
+                res.list_webhooks_403_application_json_object = out
 
         return res
 
