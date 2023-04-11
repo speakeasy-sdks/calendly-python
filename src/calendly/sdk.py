@@ -43,7 +43,7 @@ class Calendly:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "0.0.2"
+    _sdk_version: str = "0.0.3"
     _gen_version: str = "2.17.8"
 
     def __init__(self,

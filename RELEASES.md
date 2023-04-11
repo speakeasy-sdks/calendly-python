@@ -51,3 +51,11 @@ Based on:
 - Speakeasy CLI 1.19.6 (2.17.8) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v0.0.2] https://pypi.org/project/calendly-py/0.0.2 - .
+
+## 2023-04-11 12:52:46
+### Changes
+Based on:
+- OpenAPI Doc 2.0.0 ./openapi/openapi.yaml
+- Speakeasy CLI 1.19.6 (2.17.8) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v0.0.3] https://pypi.org/project/calendly-py/0.0.3 - .
