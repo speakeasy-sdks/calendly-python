@@ -1,6 +1,5 @@
 <div align="center">
-    
-    <img src="https://user-images.githubusercontent.com/6267663/231164258-4232466d-cacc-4ec7-9b30-8a8fe4f3073d.svg" width="500">
+    <img src="https://user-images.githubusercontent.com/6267663/231164258-4232466d-cacc-4ec7-9b30-8a8fe4f3073d.svg" width="500" />
     <h1>Python SDK</h1>
    <p>Integrate to save time and deliver insights</p>
    <a href="https://developer.calendly.com/api-docs/4b402d5ab3edd-calendly-developer"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=5444e4&style=for-the-badge" /></a>
