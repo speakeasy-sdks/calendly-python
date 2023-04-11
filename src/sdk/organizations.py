@@ -21,7 +21,7 @@ class Organizations:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def delete_organizations_uuid_memberships(self, request: operations.DeleteOrganizationsUUIDMembershipsRequest) -> operations.DeleteOrganizationsUUIDMembershipsResponse:
+    def delete_memberships(self, request: operations.DeleteOrganizationsUUIDMembershipsRequest) -> operations.DeleteOrganizationsUUIDMembershipsResponse:
         r"""Remove User from Organization
         Removes a user from an organization.
         
@@ -56,45 +56,7 @@ class Organizations:
 
         return res
 
-    def get_organization_memberships(self, request: operations.GetOrganizationMembershipsRequest) -> operations.GetOrganizationMembershipsResponse:
-        r"""List Organization Memberships
-        Use this to list the Organization Memberships for all users belonging to an organization, use:
-        
-        * `user` to look up a user's membership in an organization
-        
-        * `organization` to look up all users that belong to the organization
-        
-        This endpoint can also be used to retrieve your organization URI.
-        """
-        base_url = self._server_url
-        
-        url = base_url.removesuffix('/') + '/organization_memberships'
-        
-        query_params = utils.get_query_params(operations.GetOrganizationMembershipsRequest, request)
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url, params=query_params)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetOrganizationMembershipsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetOrganizationMemberships200ApplicationJSON])
-                res.get_organization_memberships_200_application_json_object = out
-        elif http_res.status_code in [400, 401, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetOrganizationMembershipsErrorResponse])
-                res.error_response = out
-        elif http_res.status_code == 403:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorResponse])
-                res.error_response1 = out
-
-        return res
-
-    def get_organizations_org_uuid_invitations_uuid(self, request: operations.GetOrganizationsOrgUUIDInvitationsUUIDRequest) -> operations.GetOrganizationsOrgUUIDInvitationsUUIDResponse:
+    def get_invitations(self, request: operations.GetOrganizationsOrgUUIDInvitationsUUIDRequest) -> operations.GetOrganizationsOrgUUIDInvitationsUUIDResponse:
         r"""Get Organization Invitation
         Returns an Organization Invitation that was sent to the organization's members.
         """
@@ -121,66 +83,7 @@ class Organizations:
 
         return res
 
-    def get_organizations_uuid_invitations(self, request: operations.GetOrganizationsUUIDInvitationsRequest) -> operations.GetOrganizationsUUIDInvitationsResponse:
-        r"""List Organization Invitations
-        Returns a list of Organization Invitations that were sent to the organization's members.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetOrganizationsUUIDInvitationsRequest, base_url, '/organizations/{uuid}/invitations', request)
-        
-        query_params = utils.get_query_params(operations.GetOrganizationsUUIDInvitationsRequest, request)
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url, params=query_params)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetOrganizationsUUIDInvitationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetOrganizationsUUIDInvitations200ApplicationJSON])
-                res.get_organizations_uuid_invitations_200_application_json_object = out
-        elif http_res.status_code in [400, 401, 403, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetOrganizationsUUIDInvitationsErrorResponse])
-                res.error_response = out
-
-        return res
-
-    def get_organizations_uuid_memberships(self, request: operations.GetOrganizationsUUIDMembershipsRequest) -> operations.GetOrganizationsUUIDMembershipsResponse:
-        r"""Get Organization Membership
-        Returns information about a user's Organization Membership
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetOrganizationsUUIDMembershipsRequest, base_url, '/organization_memberships/{uuid}', request)
-        
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetOrganizationsUUIDMembershipsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetOrganizationsUUIDMemberships200ApplicationJSON])
-                res.get_organizations_uuid_memberships_200_application_json_object = out
-        elif http_res.status_code in [400, 401, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetOrganizationsUUIDMembershipsErrorResponse])
-                res.error_response = out
-        elif http_res.status_code == 403:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorResponse])
-                res.error_response1 = out
-
-        return res
-
-    def post_organizations_uuid_invitations(self, request: operations.PostOrganizationsUUIDInvitationsRequest) -> operations.PostOrganizationsUUIDInvitationsResponse:
+    def invite_user(self, request: operations.PostOrganizationsUUIDInvitationsRequest) -> operations.PostOrganizationsUUIDInvitationsResponse:
         r"""Invite User to Organization
         Invites a user to an organization.
         """
@@ -221,7 +124,73 @@ class Organizations:
 
         return res
 
-    def revoke_users_organization_invitation(self, request: operations.RevokeUsersOrganizationInvitationRequest) -> operations.RevokeUsersOrganizationInvitationResponse:
+    def list_invitations(self, request: operations.GetOrganizationsUUIDInvitationsRequest) -> operations.GetOrganizationsUUIDInvitationsResponse:
+        r"""List Organization Invitations
+        Returns a list of Organization Invitations that were sent to the organization's members.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetOrganizationsUUIDInvitationsRequest, base_url, '/organizations/{uuid}/invitations', request)
+        
+        query_params = utils.get_query_params(operations.GetOrganizationsUUIDInvitationsRequest, request)
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetOrganizationsUUIDInvitationsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetOrganizationsUUIDInvitations200ApplicationJSON])
+                res.get_organizations_uuid_invitations_200_application_json_object = out
+        elif http_res.status_code in [400, 401, 403, 404, 500]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetOrganizationsUUIDInvitationsErrorResponse])
+                res.error_response = out
+
+        return res
+
+    def list_memberships(self, request: operations.ListOrganizationMembershipsRequest) -> operations.ListOrganizationMembershipsResponse:
+        r"""List Organization Memberships
+        Use this to list the Organization Memberships for all users belonging to an organization, use:
+        
+        * `user` to look up a user's membership in an organization
+        
+        * `organization` to look up all users that belong to the organization
+        
+        This endpoint can also be used to retrieve your organization URI.
+        """
+        base_url = self._server_url
+        
+        url = base_url.removesuffix('/') + '/organization_memberships'
+        
+        query_params = utils.get_query_params(operations.ListOrganizationMembershipsRequest, request)
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListOrganizationMembershipsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListOrganizationMemberships200ApplicationJSON])
+                res.list_organization_memberships_200_application_json_object = out
+        elif http_res.status_code in [400, 401, 404, 500]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListOrganizationMembershipsErrorResponse])
+                res.error_response = out
+        elif http_res.status_code == 403:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorResponse])
+                res.error_response1 = out
+
+        return res
+
+    def revoke_invite(self, request: operations.RevokeUsersOrganizationInvitationRequest) -> operations.RevokeUsersOrganizationInvitationResponse:
         r"""Revoke User's Organization Invitation
         Use this to revoke an Organization Invitation to an organization. Once revoked, the invitation link that was sent to the invitee is no longer valid.
         """

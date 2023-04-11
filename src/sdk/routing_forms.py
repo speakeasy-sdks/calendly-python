@@ -21,7 +21,7 @@ class RoutingForms:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_routing_form_submissions(self, request: operations.GetRoutingFormSubmissionsRequest) -> operations.GetRoutingFormSubmissionsResponse:
+    def get_submissions(self, request: operations.GetRoutingFormSubmissionsRequest) -> operations.GetRoutingFormSubmissionsResponse:
         r"""List Routing Form Submissions
         Get a list of Routing Form Submissions for a specified Routing Form.
         """
@@ -49,7 +49,7 @@ class RoutingForms:
 
         return res
 
-    def get_routing_form_submissions_uuid(self, request: operations.GetRoutingFormSubmissionsUUIDRequest) -> operations.GetRoutingFormSubmissionsUUIDResponse:
+    def get_submissions_by_uuid(self, request: operations.GetRoutingFormSubmissionsUUIDRequest) -> operations.GetRoutingFormSubmissionsUUIDResponse:
         r"""Get Routing Form Submission
         Get a specified Routing Form Submission.
         """
@@ -76,35 +76,7 @@ class RoutingForms:
 
         return res
 
-    def get_routing_forms(self, request: operations.GetRoutingFormsRequest) -> operations.GetRoutingFormsResponse:
-        r"""List Routing Forms
-        Get a list of Routing Forms for a specified Organization.
-        """
-        base_url = self._server_url
-        
-        url = base_url.removesuffix('/') + '/routing_forms'
-        
-        query_params = utils.get_query_params(operations.GetRoutingFormsRequest, request)
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url, params=query_params)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetRoutingFormsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetRoutingForms200ApplicationJSON])
-                res.get_routing_forms_200_application_json_object = out
-        elif http_res.status_code in [400, 401, 403, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetRoutingFormsErrorResponse])
-                res.error_response = out
-
-        return res
-
-    def get_routing_forms_uuid(self, request: operations.GetRoutingFormsUUIDRequest) -> operations.GetRoutingFormsUUIDResponse:
+    def get_by_uuid(self, request: operations.GetRoutingFormsUUIDRequest) -> operations.GetRoutingFormsUUIDResponse:
         r"""Get Routing Form
         Get a specified Routing Form.
         """
@@ -127,6 +99,34 @@ class RoutingForms:
         elif http_res.status_code in [400, 401, 403, 404, 500]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.GetRoutingFormsUUIDErrorResponse])
+                res.error_response = out
+
+        return res
+
+    def list(self, request: operations.ListRoutingFormsRequest) -> operations.ListRoutingFormsResponse:
+        r"""List Routing Forms
+        Get a list of Routing Forms for a specified Organization.
+        """
+        base_url = self._server_url
+        
+        url = base_url.removesuffix('/') + '/routing_forms'
+        
+        query_params = utils.get_query_params(operations.ListRoutingFormsRequest, request)
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListRoutingFormsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListRoutingForms200ApplicationJSON])
+                res.list_routing_forms_200_application_json_object = out
+        elif http_res.status_code in [400, 401, 403, 404, 500]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListRoutingFormsErrorResponse])
                 res.error_response = out
 
         return res

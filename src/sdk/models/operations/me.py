@@ -11,7 +11,7 @@ from typing import Optional
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetMyUserAccountErrorResponseDetails:
+class MeErrorResponseDetails:
     
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
     parameter: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('parameter'), 'exclude': lambda f: f is None }})  
@@ -19,17 +19,17 @@ class GetMyUserAccountErrorResponseDetails:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetMyUserAccountErrorResponse:
+class MeErrorResponse:
     r"""Error Object"""
     
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
     title: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title') }})  
-    details: Optional[list[GetMyUserAccountErrorResponseDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})  
+    details: Optional[list[MeErrorResponseDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetMyUserAccount200ApplicationJSON:
+class Me200ApplicationJSON:
     r"""Service response"""
     
     resource: shared_user.User = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('resource') }})
@@ -37,13 +37,13 @@ class GetMyUserAccount200ApplicationJSON:
     
 
 @dataclasses.dataclass
-class GetMyUserAccountResponse:
+class MeResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    error_response: Optional[GetMyUserAccountErrorResponse] = dataclasses.field(default=None)
+    error_response: Optional[MeErrorResponse] = dataclasses.field(default=None)
     r"""Cannot authenticate caller"""  
-    get_my_user_account_200_application_json_object: Optional[GetMyUserAccount200ApplicationJSON] = dataclasses.field(default=None)
+    me_200_application_json_object: Optional[Me200ApplicationJSON] = dataclasses.field(default=None)
     r"""OK"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

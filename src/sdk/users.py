@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from sdk.models import operations
+from sdk.models import operations, shared
 from typing import Optional
 
 class Users:
@@ -21,34 +21,7 @@ class Users:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_my_user_account(self) -> operations.GetMyUserAccountResponse:
-        r"""Get current user
-        Returns basic information about your user account.
-        """
-        base_url = self._server_url
-        
-        url = base_url.removesuffix('/') + '/users/me'
-        
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetMyUserAccountResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetMyUserAccount200ApplicationJSON])
-                res.get_my_user_account_200_application_json_object = out
-        elif http_res.status_code in [401, 403, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetMyUserAccountErrorResponse])
-                res.error_response = out
-
-        return res
-
-    def get_user(self, request: operations.GetUserRequest) -> operations.GetUserResponse:
+    def get(self, request: operations.GetUserRequest) -> operations.GetUserResponse:
         r"""Get user
         Returns information about a specified User.
         """
@@ -71,6 +44,64 @@ class Users:
         elif http_res.status_code in [401, 403, 404, 500]:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.GetUserErrorResponse])
+                res.error_response = out
+
+        return res
+
+    def get_memberships(self, request: operations.GetOrganizationsUUIDMembershipsRequest) -> operations.GetOrganizationsUUIDMembershipsResponse:
+        r"""Get Organization Membership
+        Returns information about a user's Organization Membership
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetOrganizationsUUIDMembershipsRequest, base_url, '/organization_memberships/{uuid}', request)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetOrganizationsUUIDMembershipsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetOrganizationsUUIDMemberships200ApplicationJSON])
+                res.get_organizations_uuid_memberships_200_application_json_object = out
+        elif http_res.status_code in [400, 401, 404, 500]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetOrganizationsUUIDMembershipsErrorResponse])
+                res.error_response = out
+        elif http_res.status_code == 403:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorResponse])
+                res.error_response1 = out
+
+        return res
+
+    def me(self) -> operations.MeResponse:
+        r"""Get current user
+        Returns basic information about your user account.
+        """
+        base_url = self._server_url
+        
+        url = base_url.removesuffix('/') + '/users/me'
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.MeResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.Me200ApplicationJSON])
+                res.me_200_application_json_object = out
+        elif http_res.status_code in [401, 403, 404, 500]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.MeErrorResponse])
                 res.error_response = out
 
         return res
