@@ -21,7 +21,7 @@ class Shares:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def post_shares(self, request: operations.PostSharesRequestBody) -> operations.PostSharesResponse:
+    def create(self, request: operations.PostSharesRequestBody) -> operations.PostSharesResponse:
         r"""Create Share
         Creates a share
         

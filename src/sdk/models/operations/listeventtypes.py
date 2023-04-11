@@ -12,7 +12,7 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class GetEventTypesRequest:
+class ListEventTypesRequest:
     
     active: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'active', 'style': 'form', 'explode': True }})
     r"""Return only active event types if true, only inactive if false, or all event types if this parameter is omitted."""  
@@ -32,27 +32,27 @@ class GetEventTypesRequest:
     user: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'user', 'style': 'form', 'explode': True }})
     r"""View available personal, team, and organization event types associated with the user's URI."""  
     
-class GetEventTypes403ApplicationJSONMessageEnum(str, Enum):
+class ListEventTypes403ApplicationJSONMessageEnum(str, Enum):
     THIS_USER_IS_NOT_IN_YOUR_ORGANIZATION = 'This user is not in your organization'
     YOU_DO_NOT_HAVE_PERMISSION = 'You do not have permission'
     YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = 'You do not have permission to access this resource.'
 
-class GetEventTypes403ApplicationJSONTitleEnum(str, Enum):
+class ListEventTypes403ApplicationJSONTitleEnum(str, Enum):
     PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetEventTypes403ApplicationJSON:
+class ListEventTypes403ApplicationJSON:
     r"""Permission Denied"""
     
-    message: Optional[GetEventTypes403ApplicationJSONMessageEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})  
-    title: Optional[GetEventTypes403ApplicationJSONTitleEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title'), 'exclude': lambda f: f is None }})  
+    message: Optional[ListEventTypes403ApplicationJSONMessageEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})  
+    title: Optional[ListEventTypes403ApplicationJSONTitleEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetEventTypesErrorResponseDetails:
+class ListEventTypesErrorResponseDetails:
     
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
     parameter: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('parameter'), 'exclude': lambda f: f is None }})  
@@ -60,17 +60,17 @@ class GetEventTypesErrorResponseDetails:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetEventTypesErrorResponse:
+class ListEventTypesErrorResponse:
     r"""Error Object"""
     
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
     title: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title') }})  
-    details: Optional[list[GetEventTypesErrorResponseDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})  
+    details: Optional[list[ListEventTypesErrorResponseDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetEventTypes200ApplicationJSON:
+class ListEventTypes200ApplicationJSON:
     r"""Service response"""
     
     collection: list[shared_eventtype.EventType] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('collection') }})  
@@ -78,15 +78,15 @@ class GetEventTypes200ApplicationJSON:
     
 
 @dataclasses.dataclass
-class GetEventTypesResponse:
+class ListEventTypesResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    error_response: Optional[GetEventTypesErrorResponse] = dataclasses.field(default=None)
+    error_response: Optional[ListEventTypesErrorResponse] = dataclasses.field(default=None)
     r"""Request is not valid"""  
-    get_event_types_200_application_json_object: Optional[GetEventTypes200ApplicationJSON] = dataclasses.field(default=None)
+    list_event_types_200_application_json_object: Optional[ListEventTypes200ApplicationJSON] = dataclasses.field(default=None)
     r"""OK"""  
-    get_event_types_403_application_json_object: Optional[GetEventTypes403ApplicationJSON] = dataclasses.field(default=None)
+    list_event_types_403_application_json_object: Optional[ListEventTypes403ApplicationJSON] = dataclasses.field(default=None)
     r"""Permission Denied"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

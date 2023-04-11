@@ -21,63 +21,145 @@ class ScheduledEvents:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def delete_invitee_no_show(self, request: operations.DeleteInviteeNoShowRequest) -> operations.DeleteInviteeNoShowResponse:
-        r"""Delete Invitee No Show
-        Undoes marking an Invitee as a No Show.
+    def cancel(self, request: operations.PostScheduledEventsUUIDCancellationMultipartRequest) -> operations.PostScheduledEventsUUIDCancellationMultipartResponse:
+        r"""Cancel Event
+        Cancels specified event.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.DeleteInviteeNoShowRequest, base_url, '/invitee_no_shows/{uuid}', request)
+        url = utils.generate_url(operations.PostScheduledEventsUUIDCancellationMultipartRequest, base_url, '/scheduled_events/{uuid}/cancellation', request)
         
-        
-        client = self._security_client
-        
-        http_res = client.request('DELETE', url)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.DeleteInviteeNoShowResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 204:
-            pass
-        elif http_res.status_code in [401, 403, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteInviteeNoShowErrorResponse])
-                res.error_response = out
-
-        return res
-
-    def get_scheduled_events_event_uuid_invitees_invitee_uuid(self, request: operations.GetScheduledEventsEventUUIDInviteesInviteeUUIDRequest) -> operations.GetScheduledEventsEventUUIDInviteesInviteeUUIDResponse:
-        r"""Get Event Invitee
-        Returns information about a specified Invitee (person invited to an event).
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetScheduledEventsEventUUIDInviteesInviteeUUIDRequest, base_url, '/scheduled_events/{event_uuid}/invitees/{invitee_uuid}', request)
-        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetScheduledEventsEventUUIDInviteesInviteeUUIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.PostScheduledEventsUUIDCancellationMultipartResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if http_res.status_code == 200:
+        if http_res.status_code == 201:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetScheduledEventsEventUUIDInviteesInviteeUUID200ApplicationJSON])
-                res.get_scheduled_events_event_uuid_invitees_invitee_uuid_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationMultipart201ApplicationJSON])
+                res.post_scheduled_events_uuid_cancellation_multipart_201_application_json_object = out
         elif http_res.status_code in [400, 401, 404, 500]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetScheduledEventsEventUUIDInviteesInviteeUUIDErrorResponse])
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationMultipartErrorResponse])
                 res.error_response = out
         elif http_res.status_code == 403:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorResponse])
-                res.error_response1 = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationMultipart403ApplicationJSON])
+                res.post_scheduled_events_uuid_cancellation_multipart_403_application_json_object = out
 
         return res
 
-    def get_scheduled_events_uuid(self, request: operations.GetScheduledEventsUUIDRequest) -> operations.GetScheduledEventsUUIDResponse:
+    def cancel(self, request: operations.PostScheduledEventsUUIDCancellationRawRequest) -> operations.PostScheduledEventsUUIDCancellationRawResponse:
+        r"""Cancel Event
+        Cancels specified event.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.PostScheduledEventsUUIDCancellationRawRequest, base_url, '/scheduled_events/{uuid}/cancellation', request)
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'raw')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.PostScheduledEventsUUIDCancellationRawResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 201:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationRaw201ApplicationJSON])
+                res.post_scheduled_events_uuid_cancellation_raw_201_application_json_object = out
+        elif http_res.status_code in [400, 401, 404, 500]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationRawErrorResponse])
+                res.error_response = out
+        elif http_res.status_code == 403:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationRaw403ApplicationJSON])
+                res.post_scheduled_events_uuid_cancellation_raw_403_application_json_object = out
+
+        return res
+
+    def cancel(self, request: operations.PostScheduledEventsUUIDCancellationJSONRequest) -> operations.PostScheduledEventsUUIDCancellationJSONResponse:
+        r"""Cancel Event
+        Cancels specified event.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.PostScheduledEventsUUIDCancellationJSONRequest, base_url, '/scheduled_events/{uuid}/cancellation', request)
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.PostScheduledEventsUUIDCancellationJSONResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 201:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationJSON201ApplicationJSON])
+                res.post_scheduled_events_uuid_cancellation_json_201_application_json_object = out
+        elif http_res.status_code in [400, 401, 404, 500]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationJSONErrorResponse])
+                res.error_response = out
+        elif http_res.status_code == 403:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationJSON403ApplicationJSON])
+                res.post_scheduled_events_uuid_cancellation_json_403_application_json_object = out
+
+        return res
+
+    def create_no_show(self, request: operations.PostInviteeNoShowRequestBody) -> operations.PostInviteeNoShowResponse:
+        r"""Create Invitee No Show
+        Marks an Invitee as a No Show.
+        """
+        base_url = self._server_url
+        
+        url = base_url.removesuffix('/') + '/invitee_no_shows'
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        if data is None and form is None:
+            raise Exception('request body is required')
+        
+        client = self._security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.PostInviteeNoShowResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 201:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostInviteeNoShow201ApplicationJSON])
+                res.post_invitee_no_show_201_application_json_object = out
+        elif http_res.status_code in [400, 401, 403, 404, 500]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.PostInviteeNoShowErrorResponse])
+                res.error_response = out
+
+        return res
+
+    def get_event_by_uuid(self, request: operations.GetScheduledEventsUUIDRequest) -> operations.GetScheduledEventsUUIDResponse:
         r"""Get Event
         Returns information about a specified Event.
         """
@@ -105,33 +187,6 @@ class ScheduledEvents:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.GetScheduledEventsUUID403ApplicationJSON])
                 res.get_scheduled_events_uuid_403_application_json_object = out
-
-        return res
-
-    def get_invitee_no_show(self, request: operations.GetInviteeNoShowRequest) -> operations.GetInviteeNoShowResponse:
-        r"""Get Invitee No Show
-        Returns information about a specified Invitee No Show.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetInviteeNoShowRequest, base_url, '/invitee_no_shows/{uuid}', request)
-        
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetInviteeNoShowResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetInviteeNoShow200ApplicationJSON])
-                res.get_invitee_no_show_200_application_json_object = out
-        elif http_res.status_code in [400, 401, 403, 404]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetInviteeNoShowErrorResponse])
-                res.error_response = out
 
         return res
 
@@ -167,7 +222,65 @@ class ScheduledEvents:
 
         return res
 
-    def get_scheduled_events(self, request: operations.GetScheduledEventsRequest) -> operations.GetScheduledEventsResponse:
+    def get_invitees_by_uuid(self, request: operations.GetScheduledEventsEventUUIDInviteesInviteeUUIDRequest) -> operations.GetScheduledEventsEventUUIDInviteesInviteeUUIDResponse:
+        r"""Get Event Invitee
+        Returns information about a specified Invitee (person invited to an event).
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetScheduledEventsEventUUIDInviteesInviteeUUIDRequest, base_url, '/scheduled_events/{event_uuid}/invitees/{invitee_uuid}', request)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetScheduledEventsEventUUIDInviteesInviteeUUIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetScheduledEventsEventUUIDInviteesInviteeUUID200ApplicationJSON])
+                res.get_scheduled_events_event_uuid_invitees_invitee_uuid_200_application_json_object = out
+        elif http_res.status_code in [400, 401, 404, 500]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetScheduledEventsEventUUIDInviteesInviteeUUIDErrorResponse])
+                res.error_response = out
+        elif http_res.status_code == 403:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ErrorResponse])
+                res.error_response1 = out
+
+        return res
+
+    def get_no_show(self, request: operations.GetInviteeNoShowRequest) -> operations.GetInviteeNoShowResponse:
+        r"""Get Invitee No Show
+        Returns information about a specified Invitee No Show.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetInviteeNoShowRequest, base_url, '/invitee_no_shows/{uuid}', request)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetInviteeNoShowResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetInviteeNoShow200ApplicationJSON])
+                res.get_invitee_no_show_200_application_json_object = out
+        elif http_res.status_code in [400, 401, 403, 404]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetInviteeNoShowErrorResponse])
+                res.error_response = out
+
+        return res
+
+    def list(self, request: operations.ListScheduledEventsRequest) -> operations.ListScheduledEventsResponse:
         r"""List Events
         Returns a list of  Events.
         
@@ -183,164 +296,51 @@ class ScheduledEvents:
         
         url = base_url.removesuffix('/') + '/scheduled_events'
         
-        query_params = utils.get_query_params(operations.GetScheduledEventsRequest, request)
+        query_params = utils.get_query_params(operations.ListScheduledEventsRequest, request)
         
         client = self._security_client
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetScheduledEventsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListScheduledEventsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetScheduledEvents200ApplicationJSON])
-                res.get_scheduled_events_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListScheduledEvents200ApplicationJSON])
+                res.list_scheduled_events_200_application_json_object = out
         elif http_res.status_code in [400, 401, 404, 500]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetScheduledEventsErrorResponse])
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListScheduledEventsErrorResponse])
                 res.error_response = out
         elif http_res.status_code == 403:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetScheduledEvents403ApplicationJSON])
-                res.get_scheduled_events_403_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListScheduledEvents403ApplicationJSON])
+                res.list_scheduled_events_403_application_json_object = out
 
         return res
 
-    def post_scheduled_events_uuid_cancellation_json(self, request: operations.PostScheduledEventsUUIDCancellationJSONRequest) -> operations.PostScheduledEventsUUIDCancellationJSONResponse:
-        r"""Cancel Event
-        Cancels specified event.
+    def unmark_no_show(self, request: operations.DeleteInviteeNoShowRequest) -> operations.DeleteInviteeNoShowResponse:
+        r"""Delete Invitee No Show
+        Undoes marking an Invitee as a No Show.
         """
         base_url = self._server_url
         
-        url = utils.generate_url(operations.PostScheduledEventsUUIDCancellationJSONRequest, base_url, '/scheduled_events/{uuid}/cancellation', request)
+        url = utils.generate_url(operations.DeleteInviteeNoShowRequest, base_url, '/invitee_no_shows/{uuid}', request)
         
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
         
         client = self._security_client
         
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        http_res = client.request('DELETE', url)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.PostScheduledEventsUUIDCancellationJSONResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.DeleteInviteeNoShowResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
-        if http_res.status_code == 201:
+        if http_res.status_code == 204:
+            pass
+        elif http_res.status_code in [401, 403, 404, 500]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationJSON201ApplicationJSON])
-                res.post_scheduled_events_uuid_cancellation_json_201_application_json_object = out
-        elif http_res.status_code in [400, 401, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationJSONErrorResponse])
-                res.error_response = out
-        elif http_res.status_code == 403:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationJSON403ApplicationJSON])
-                res.post_scheduled_events_uuid_cancellation_json_403_application_json_object = out
-
-        return res
-
-    def post_scheduled_events_uuid_cancellation_multipart(self, request: operations.PostScheduledEventsUUIDCancellationMultipartRequest) -> operations.PostScheduledEventsUUIDCancellationMultipartResponse:
-        r"""Cancel Event
-        Cancels specified event.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.PostScheduledEventsUUIDCancellationMultipartRequest, base_url, '/scheduled_events/{uuid}/cancellation', request)
-        
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        
-        client = self._security_client
-        
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.PostScheduledEventsUUIDCancellationMultipartResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 201:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationMultipart201ApplicationJSON])
-                res.post_scheduled_events_uuid_cancellation_multipart_201_application_json_object = out
-        elif http_res.status_code in [400, 401, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationMultipartErrorResponse])
-                res.error_response = out
-        elif http_res.status_code == 403:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationMultipart403ApplicationJSON])
-                res.post_scheduled_events_uuid_cancellation_multipart_403_application_json_object = out
-
-        return res
-
-    def post_scheduled_events_uuid_cancellation_raw(self, request: operations.PostScheduledEventsUUIDCancellationRawRequest) -> operations.PostScheduledEventsUUIDCancellationRawResponse:
-        r"""Cancel Event
-        Cancels specified event.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.PostScheduledEventsUUIDCancellationRawRequest, base_url, '/scheduled_events/{uuid}/cancellation', request)
-        
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'raw')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        
-        client = self._security_client
-        
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.PostScheduledEventsUUIDCancellationRawResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 201:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationRaw201ApplicationJSON])
-                res.post_scheduled_events_uuid_cancellation_raw_201_application_json_object = out
-        elif http_res.status_code in [400, 401, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationRawErrorResponse])
-                res.error_response = out
-        elif http_res.status_code == 403:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostScheduledEventsUUIDCancellationRaw403ApplicationJSON])
-                res.post_scheduled_events_uuid_cancellation_raw_403_application_json_object = out
-
-        return res
-
-    def post_invitee_no_show(self, request: operations.PostInviteeNoShowRequestBody) -> operations.PostInviteeNoShowResponse:
-        r"""Create Invitee No Show
-        Marks an Invitee as a No Show.
-        """
-        base_url = self._server_url
-        
-        url = base_url.removesuffix('/') + '/invitee_no_shows'
-        
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        if data is None and form is None:
-            raise Exception('request body is required')
-        
-        client = self._security_client
-        
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.PostInviteeNoShowResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 201:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostInviteeNoShow201ApplicationJSON])
-                res.post_invitee_no_show_201_application_json_object = out
-        elif http_res.status_code in [400, 401, 403, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.PostInviteeNoShowErrorResponse])
+                out = utils.unmarshal_json(http_res.text, Optional[operations.DeleteInviteeNoShowErrorResponse])
                 res.error_response = out
 
         return res

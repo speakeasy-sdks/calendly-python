@@ -10,14 +10,14 @@ from enum import Enum
 from sdk import utils
 from typing import Optional
 
-class GetScheduledEventsStatusEnum(str, Enum):
+class ListScheduledEventsStatusEnum(str, Enum):
     r"""Whether the scheduled event is `active` or `canceled`"""
     ACTIVE = 'active'
     CANCELED = 'canceled'
 
 
 @dataclasses.dataclass
-class GetScheduledEventsRequest:
+class ListScheduledEventsRequest:
     
     count: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'count', 'style': 'form', 'explode': True }})
     r"""The number of rows to return"""  
@@ -36,33 +36,33 @@ class GetScheduledEventsRequest:
     Supported fields are: start_time.
     Sort direction is specified as: asc, desc.
     """  
-    status: Optional[GetScheduledEventsStatusEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'status', 'style': 'form', 'explode': True }})
+    status: Optional[ListScheduledEventsStatusEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'status', 'style': 'form', 'explode': True }})
     r"""Whether the scheduled event is `active` or `canceled`"""  
     user: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'user', 'style': 'form', 'explode': True }})
     r"""Return events that are scheduled with the user associated with this URI"""  
     
-class GetScheduledEvents403ApplicationJSONMessageEnum(str, Enum):
+class ListScheduledEvents403ApplicationJSONMessageEnum(str, Enum):
     YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = 'You do not have permission to access this resource.'
     PLEASE_ALSO_SPECIFY_ORGANIZATION_WHEN_REQUESTING_EVENTS_FOR_A_USER_WITHIN_YOUR_ORGANIZATION_ = 'Please also specify organization when requesting events for a user within your organization.'
     THIS_USER_IS_NOT_IN_YOUR_ORGANIZATION = 'This user is not in your organization'
     YOU_DO_NOT_HAVE_PERMISSION = 'You do not have permission'
 
-class GetScheduledEvents403ApplicationJSONTitleEnum(str, Enum):
+class ListScheduledEvents403ApplicationJSONTitleEnum(str, Enum):
     PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetScheduledEvents403ApplicationJSON:
+class ListScheduledEvents403ApplicationJSON:
     r"""Permission Denied"""
     
-    message: Optional[GetScheduledEvents403ApplicationJSONMessageEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})  
-    title: Optional[GetScheduledEvents403ApplicationJSONTitleEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title'), 'exclude': lambda f: f is None }})  
+    message: Optional[ListScheduledEvents403ApplicationJSONMessageEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})  
+    title: Optional[ListScheduledEvents403ApplicationJSONTitleEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetScheduledEventsErrorResponseDetails:
+class ListScheduledEventsErrorResponseDetails:
     
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
     parameter: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('parameter'), 'exclude': lambda f: f is None }})  
@@ -70,17 +70,17 @@ class GetScheduledEventsErrorResponseDetails:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetScheduledEventsErrorResponse:
+class ListScheduledEventsErrorResponse:
     r"""Error Object"""
     
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
     title: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title') }})  
-    details: Optional[list[GetScheduledEventsErrorResponseDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})  
+    details: Optional[list[ListScheduledEventsErrorResponseDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetScheduledEvents200ApplicationJSON:
+class ListScheduledEvents200ApplicationJSON:
     r"""Service response"""
     
     collection: list[shared_event.Event] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('collection') }})
@@ -89,15 +89,15 @@ class GetScheduledEvents200ApplicationJSON:
     
 
 @dataclasses.dataclass
-class GetScheduledEventsResponse:
+class ListScheduledEventsResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    error_response: Optional[GetScheduledEventsErrorResponse] = dataclasses.field(default=None)
+    error_response: Optional[ListScheduledEventsErrorResponse] = dataclasses.field(default=None)
     r"""Request is not valid"""  
-    get_scheduled_events_200_application_json_object: Optional[GetScheduledEvents200ApplicationJSON] = dataclasses.field(default=None)
+    list_scheduled_events_200_application_json_object: Optional[ListScheduledEvents200ApplicationJSON] = dataclasses.field(default=None)
     r"""OK"""  
-    get_scheduled_events_403_application_json_object: Optional[GetScheduledEvents403ApplicationJSON] = dataclasses.field(default=None)
+    list_scheduled_events_403_application_json_object: Optional[ListScheduledEvents403ApplicationJSON] = dataclasses.field(default=None)
     r"""Permission Denied"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

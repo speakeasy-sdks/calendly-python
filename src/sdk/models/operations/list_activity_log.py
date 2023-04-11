@@ -13,7 +13,7 @@ from marshmallow import fields
 from sdk import utils
 from typing import Optional
 
-class ActivityLogSortEnum(str, Enum):
+class ListActivityLogSortEnum(str, Enum):
     ACTION_ASC = 'action:asc'
     ACTION_DESC = 'action:desc'
     ACTOR_DISPLAY_NAME_ASC = 'actor.display_name:asc'
@@ -27,7 +27,7 @@ class ActivityLogSortEnum(str, Enum):
 
 
 @dataclasses.dataclass
-class ActivityLogRequest:
+class ListActivityLogRequest:
     
     organization: str = dataclasses.field(metadata={'query_param': { 'field_name': 'organization', 'style': 'form', 'explode': True }})
     r"""Return activity log entries from the organization associated with this URI"""  
@@ -56,29 +56,29 @@ class ActivityLogRequest:
       - `()` - to allow specifying precedence during a search. Example: `(this + that) OR (person + place)`
       - `*` - to allow prefix searching. Example `*@other-website.com`
     """  
-    sort: Optional[list[ActivityLogSortEnum]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'sort', 'style': 'form', 'explode': False }})
+    sort: Optional[list[ListActivityLogSortEnum]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'sort', 'style': 'form', 'explode': False }})
     r"""Order results by the specified field and direction. List of {field}:{direction} values."""  
     
-class ActivityLog403ApplicationJSONMessageEnum(str, Enum):
+class ListActivityLog403ApplicationJSONMessageEnum(str, Enum):
     PLEASE_UPGRADE_YOUR_CALENDLY_ACCOUNT_TO_ENTERPRISE_ = 'Please upgrade your Calendly account to Enterprise.'
     YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = 'You do not have permission to access this resource.'
 
-class ActivityLog403ApplicationJSONTitleEnum(str, Enum):
+class ListActivityLog403ApplicationJSONTitleEnum(str, Enum):
     PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ActivityLog403ApplicationJSON:
+class ListActivityLog403ApplicationJSON:
     r"""Permission Denied"""
     
-    message: Optional[ActivityLog403ApplicationJSONMessageEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})  
-    title: Optional[ActivityLog403ApplicationJSONTitleEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title'), 'exclude': lambda f: f is None }})  
+    message: Optional[ListActivityLog403ApplicationJSONMessageEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})  
+    title: Optional[ListActivityLog403ApplicationJSONTitleEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ActivityLogErrorResponseDetails:
+class ListActivityLogErrorResponseDetails:
     
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
     parameter: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('parameter'), 'exclude': lambda f: f is None }})  
@@ -86,17 +86,17 @@ class ActivityLogErrorResponseDetails:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ActivityLogErrorResponse:
+class ListActivityLogErrorResponse:
     r"""Error Object"""
     
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
     title: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title') }})  
-    details: Optional[list[ActivityLogErrorResponseDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})  
+    details: Optional[list[ListActivityLogErrorResponseDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ActivityLog200ApplicationJSON:
+class ListActivityLog200ApplicationJSON:
     r"""Activity log response"""
     
     collection: list[shared_entry.Entry] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('collection') }})
@@ -111,15 +111,15 @@ class ActivityLog200ApplicationJSON:
     
 
 @dataclasses.dataclass
-class ActivityLogResponse:
+class ListActivityLogResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    activity_log_200_application_json_object: Optional[ActivityLog200ApplicationJSON] = dataclasses.field(default=None)
-    r"""OK"""  
-    activity_log_403_application_json_object: Optional[ActivityLog403ApplicationJSON] = dataclasses.field(default=None)
-    r"""Permission Denied"""  
-    error_response: Optional[ActivityLogErrorResponse] = dataclasses.field(default=None)
+    error_response: Optional[ListActivityLogErrorResponse] = dataclasses.field(default=None)
     r"""Request is not valid"""  
+    list_activity_log_200_application_json_object: Optional[ListActivityLog200ApplicationJSON] = dataclasses.field(default=None)
+    r"""OK"""  
+    list_activity_log_403_application_json_object: Optional[ListActivityLog403ApplicationJSON] = dataclasses.field(default=None)
+    r"""Permission Denied"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     
