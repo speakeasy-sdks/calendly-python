@@ -11,10 +11,10 @@ pip install calendly-py
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```python
-import sdk
-from sdk.models import operations, shared
+import calendly
+from calendly.models import operations, shared
 
-s = sdk.SDK(
+s = calendly.Calendly(
     security=shared.Security(
         oauth2="Bearer YOUR_ACCESS_TOKEN_HERE",
     ),
@@ -35,7 +35,7 @@ req = operations.ListScheduledEventsRequest(
     
 res = s.scheduled_events.list(req)
 
-if res.list_scheduled_events_200_application_json_object is not None:
+if res.scheduled_events_response is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
