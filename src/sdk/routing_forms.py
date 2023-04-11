@@ -21,61 +21,6 @@ class RoutingForms:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def get_routing_form_submissions(self, request: operations.GetRoutingFormSubmissionsRequest) -> operations.GetRoutingFormSubmissionsResponse:
-        r"""List Routing Form Submissions
-        Get a list of Routing Form Submissions for a specified Routing Form.
-        """
-        base_url = self._server_url
-        
-        url = base_url.removesuffix('/') + '/routing_form_submissions'
-        
-        query_params = utils.get_query_params(operations.GetRoutingFormSubmissionsRequest, request)
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url, params=query_params)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetRoutingFormSubmissionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetRoutingFormSubmissions200ApplicationJSON])
-                res.get_routing_form_submissions_200_application_json_object = out
-        elif http_res.status_code in [400, 401, 403, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetRoutingFormSubmissionsErrorResponse])
-                res.error_response = out
-
-        return res
-
-    def get_routing_form_submissions_uuid(self, request: operations.GetRoutingFormSubmissionsUUIDRequest) -> operations.GetRoutingFormSubmissionsUUIDResponse:
-        r"""Get Routing Form Submission
-        Get a specified Routing Form Submission.
-        """
-        base_url = self._server_url
-        
-        url = utils.generate_url(operations.GetRoutingFormSubmissionsUUIDRequest, base_url, '/routing_form_submissions/{uuid}', request)
-        
-        
-        client = self._security_client
-        
-        http_res = client.request('GET', url)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.GetRoutingFormSubmissionsUUIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetRoutingFormSubmissionsUUID200ApplicationJSON])
-                res.get_routing_form_submissions_uuid_200_application_json_object = out
-        elif http_res.status_code in [400, 401, 403, 404, 500]:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetRoutingFormSubmissionsUUIDErrorResponse])
-                res.error_response = out
-
-        return res
-
     def get_routing_forms(self, request: operations.GetRoutingFormsRequest) -> operations.GetRoutingFormsResponse:
         r"""List Routing Forms
         Get a list of Routing Forms for a specified Organization.
@@ -104,7 +49,62 @@ class RoutingForms:
 
         return res
 
-    def get_routing_forms_uuid(self, request: operations.GetRoutingFormsUUIDRequest) -> operations.GetRoutingFormsUUIDResponse:
+    def get_submissions(self, request: operations.GetRoutingFormSubmissionsRequest) -> operations.GetRoutingFormSubmissionsResponse:
+        r"""List Routing Form Submissions
+        Get a list of Routing Form Submissions for a specified Routing Form.
+        """
+        base_url = self._server_url
+        
+        url = base_url.removesuffix('/') + '/routing_form_submissions'
+        
+        query_params = utils.get_query_params(operations.GetRoutingFormSubmissionsRequest, request)
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url, params=query_params)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetRoutingFormSubmissionsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetRoutingFormSubmissions200ApplicationJSON])
+                res.get_routing_form_submissions_200_application_json_object = out
+        elif http_res.status_code in [400, 401, 403, 404, 500]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetRoutingFormSubmissionsErrorResponse])
+                res.error_response = out
+
+        return res
+
+    def get_submissions_by_uuid(self, request: operations.GetRoutingFormSubmissionsUUIDRequest) -> operations.GetRoutingFormSubmissionsUUIDResponse:
+        r"""Get Routing Form Submission
+        Get a specified Routing Form Submission.
+        """
+        base_url = self._server_url
+        
+        url = utils.generate_url(operations.GetRoutingFormSubmissionsUUIDRequest, base_url, '/routing_form_submissions/{uuid}', request)
+        
+        
+        client = self._security_client
+        
+        http_res = client.request('GET', url)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.GetRoutingFormSubmissionsUUIDResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetRoutingFormSubmissionsUUID200ApplicationJSON])
+                res.get_routing_form_submissions_uuid_200_application_json_object = out
+        elif http_res.status_code in [400, 401, 403, 404, 500]:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.GetRoutingFormSubmissionsUUIDErrorResponse])
+                res.error_response = out
+
+        return res
+
+    def get_by_uuid(self, request: operations.GetRoutingFormsUUIDRequest) -> operations.GetRoutingFormsUUIDResponse:
         r"""Get Routing Form
         Get a specified Routing Form.
         """

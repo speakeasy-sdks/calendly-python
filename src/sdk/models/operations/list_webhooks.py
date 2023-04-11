@@ -10,18 +10,18 @@ from enum import Enum
 from sdk import utils
 from typing import Optional
 
-class GetWebhooksScopeEnum(str, Enum):
+class ListWebhooksScopeEnum(str, Enum):
     r"""Filter the list by organization or user"""
     ORGANIZATION = 'organization'
     USER = 'user'
 
 
 @dataclasses.dataclass
-class GetWebhooksRequest:
+class ListWebhooksRequest:
     
     organization: str = dataclasses.field(metadata={'query_param': { 'field_name': 'organization', 'style': 'form', 'explode': True }})
     r"""Indicates if the results should be filtered by organization"""  
-    scope: GetWebhooksScopeEnum = dataclasses.field(metadata={'query_param': { 'field_name': 'scope', 'style': 'form', 'explode': True }})
+    scope: ListWebhooksScopeEnum = dataclasses.field(metadata={'query_param': { 'field_name': 'scope', 'style': 'form', 'explode': True }})
     r"""Filter the list by organization or user"""  
     count: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'count', 'style': 'form', 'explode': True }})
     r"""The number of rows to return"""  
@@ -35,27 +35,27 @@ class GetWebhooksRequest:
     user: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'user', 'style': 'form', 'explode': True }})
     r"""Indicates if the results should be filtered by user. This parameter is only required if the `scope` parameter is set to `user`."""  
     
-class GetWebhooks403ApplicationJSONMessageEnum(str, Enum):
+class ListWebhooks403ApplicationJSONMessageEnum(str, Enum):
     YOU_DO_NOT_HAVE_PERMISSION = 'You do not have permission'
     YOU_DO_NOT_HAVE_PERMISSION_TO_ACCESS_THIS_RESOURCE_ = 'You do not have permission to access this resource.'
     UNAUTHORIZED = 'Unauthorized'
 
-class GetWebhooks403ApplicationJSONTitleEnum(str, Enum):
+class ListWebhooks403ApplicationJSONTitleEnum(str, Enum):
     PERMISSION_DENIED = 'Permission Denied'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetWebhooks403ApplicationJSON:
+class ListWebhooks403ApplicationJSON:
     r"""Permission Denied"""
     
-    message: Optional[GetWebhooks403ApplicationJSONMessageEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})  
-    title: Optional[GetWebhooks403ApplicationJSONTitleEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title'), 'exclude': lambda f: f is None }})  
+    message: Optional[ListWebhooks403ApplicationJSONMessageEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})  
+    title: Optional[ListWebhooks403ApplicationJSONTitleEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetWebhooksErrorResponseDetails:
+class ListWebhooksErrorResponseDetails:
     
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
     parameter: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('parameter'), 'exclude': lambda f: f is None }})  
@@ -63,17 +63,17 @@ class GetWebhooksErrorResponseDetails:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetWebhooksErrorResponse:
+class ListWebhooksErrorResponse:
     r"""Error Object"""
     
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
     title: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title') }})  
-    details: Optional[list[GetWebhooksErrorResponseDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})  
+    details: Optional[list[ListWebhooksErrorResponseDetails]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('details'), 'exclude': lambda f: f is None }})  
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class GetWebhooks200ApplicationJSON:
+class ListWebhooks200ApplicationJSON:
     r"""OK"""
     
     collection: list[shared_webhooksubscription.WebhookSubscription] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('collection') }})  
@@ -81,15 +81,15 @@ class GetWebhooks200ApplicationJSON:
     
 
 @dataclasses.dataclass
-class GetWebhooksResponse:
+class ListWebhooksResponse:
     
     content_type: str = dataclasses.field()  
     status_code: int = dataclasses.field()  
-    error_response: Optional[GetWebhooksErrorResponse] = dataclasses.field(default=None)
+    error_response: Optional[ListWebhooksErrorResponse] = dataclasses.field(default=None)
     r"""Request is not valid"""  
-    get_webhooks_200_application_json_object: Optional[GetWebhooks200ApplicationJSON] = dataclasses.field(default=None)
+    list_webhooks_200_application_json_object: Optional[ListWebhooks200ApplicationJSON] = dataclasses.field(default=None)
     r"""OK"""  
-    get_webhooks_403_application_json_object: Optional[GetWebhooks403ApplicationJSON] = dataclasses.field(default=None)
+    list_webhooks_403_application_json_object: Optional[ListWebhooks403ApplicationJSON] = dataclasses.field(default=None)
     r"""Permission Denied"""  
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
     

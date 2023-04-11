@@ -21,7 +21,7 @@ class ActivityLog:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
-    def activity_log(self, request: operations.ActivityLogRequest) -> operations.ActivityLogResponse:
+    def list_activity_log(self, request: operations.ListActivityLogRequest) -> operations.ListActivityLogResponse:
         r"""List activity log entries
         <!-- theme: info -->
           > This endpoint requires an <strong>Enterprise</strong> subscription.
@@ -32,27 +32,27 @@ class ActivityLog:
         
         url = base_url.removesuffix('/') + '/activity_log_entries'
         
-        query_params = utils.get_query_params(operations.ActivityLogRequest, request)
+        query_params = utils.get_query_params(operations.ListActivityLogRequest, request)
         
         client = self._security_client
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.ActivityLogResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListActivityLogResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ActivityLog200ApplicationJSON])
-                res.activity_log_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListActivityLog200ApplicationJSON])
+                res.list_activity_log_200_application_json_object = out
         elif http_res.status_code in [400, 404, 500]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ActivityLogErrorResponse])
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListActivityLogErrorResponse])
                 res.error_response = out
         elif http_res.status_code == 403:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.ActivityLog403ApplicationJSON])
-                res.activity_log_403_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListActivityLog403ApplicationJSON])
+                res.list_activity_log_403_application_json_object = out
 
         return res
 

@@ -4,7 +4,7 @@
 ## SDK Installation
 
 ```bash
-pip install git+https://github.com/speakeasy-sdks/calendly-python-sdk.git
+pip install calendly-py
 ```
 <!-- End SDK Installation -->
 
@@ -21,39 +21,21 @@ s = sdk.SDK(
 )
 
 
-req = operations.ActivityLogRequest(
-    action=[
-        "provident",
-        "distinctio",
-        "quibusdam",
-    ],
-    actor=[
-        "https://api.calendly.com/users/EBHAAFHDCAEQTSEZ",
-        "https://api.calendly.com/users/EBHAAFHDCAEQTSEZ",
-        "https://api.calendly.com/users/EBHAAFHDCAEQTSEZ",
-    ],
-    count=857946,
-    max_occurred_at="2021-04-22T12:08:58.275Z",
-    min_occurred_at="2022-05-18T09:34:54.894Z",
-    namespace=[
-        "suscipit",
-        "iure",
-        "magnam",
-    ],
+req = operations.ListScheduledEventsRequest(
+    count=5488.14,
+    invitee_email="alice@example.com",
+    max_start_time="provident",
+    min_start_time="distinctio",
     organization="https://api.calendly.com/organizations/EBHAAFHDCAEQTSEZ",
-    page_token="debitis",
-    search_term="ipsa",
-    sort=[
-        "actor.display_name:asc",
-        "actor.display_name:desc",
-        "actor.uri:asc",
-        "namespace:desc",
-    ],
+    page_token="quibusdam",
+    sort="unde",
+    status="canceled",
+    user="https://api.calendly.com/users/EBHAAFHDCAEQTSEZ",
 )
     
-res = s.activity_log.activity_log(req)
+res = s.scheduled_events.list_scheduled_events(req)
 
-if res.activity_log_200_application_json_object is not None:
+if res.list_scheduled_events_200_application_json_object is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->
@@ -64,54 +46,54 @@ if res.activity_log_200_application_json_object is not None:
 
 ### activity_log
 
-* `activity_log` - List activity log entries
+* `list_activity_log` - List activity log entries
 
 ### availability
 
-* `get_user_availability_schedules` - List User Availability Schedules
+* `get_availability` - List User Availability Schedules
+* `get_busy_times` - List User Busy Times
 * `get_user_availability_schedules_uuid` - Get User Availability Schedule
-* `get_user_busy_times` - List User Busy Times
 
 ### data_compliance
 
-* `post_data_compliance_deletion_events` - Delete Scheduled Event Data
-* `post_data_compliance_deletion_invitees` - Delete Invitee Data
+* `create_deletion_event` - Delete Scheduled Event Data
+* `delete_invitee_data` - Delete Invitee Data
 
 ### event_types
 
+* `get_available_times` - List Event Type Available Times
 * `get_event_types_uuid` - Get Event Type
-* `get_event_type_available_times` - List Event Type Available Times
-* `get_event_types` - List User's Event Types
+* `list_event_types` - List User's Event Types
 
 ### organizations
 
-* `delete_organizations_uuid_memberships` - Remove User from Organization
+* `delete_memberships` - Remove User from Organization
+* `get_invitations` - Get Organization Invitation
+* `get_memberships` - Get Organization Membership
 * `get_organization_memberships` - List Organization Memberships
-* `get_organizations_org_uuid_invitations_uuid` - Get Organization Invitation
-* `get_organizations_uuid_invitations` - List Organization Invitations
-* `get_organizations_uuid_memberships` - Get Organization Membership
-* `post_organizations_uuid_invitations` - Invite User to Organization
-* `revoke_users_organization_invitation` - Revoke User's Organization Invitation
+* `invite_user` - Invite User to Organization
+* `list_invitations` - List Organization Invitations
+* `revoke_invite` - Revoke User's Organization Invitation
 
 ### routing_forms
 
-* `get_routing_form_submissions` - List Routing Form Submissions
-* `get_routing_form_submissions_uuid` - Get Routing Form Submission
 * `get_routing_forms` - List Routing Forms
-* `get_routing_forms_uuid` - Get Routing Form
+* `get_submissions` - List Routing Form Submissions
+* `get_submissions_by_uuid` - Get Routing Form Submission
+* `get_by_uuid` - Get Routing Form
 
 ### scheduled_events
 
+* `cancel` - Cancel Event
+* `cancel` - Cancel Event
+* `cancel` - Cancel Event
+* `create_no_show` - Create Invitee No Show
 * `delete_invitee_no_show` - Delete Invitee No Show
-* `get_scheduled_events_event_uuid_invitees_invitee_uuid` - Get Event Invitee
-* `get_scheduled_events_uuid` - Get Event
-* `get_invitee_no_show` - Get Invitee No Show
 * `get_invitees` - List Event Invitees
-* `get_scheduled_events` - List Events
-* `post_scheduled_events_uuid_cancellation_json` - Cancel Event
-* `post_scheduled_events_uuid_cancellation_multipart` - Cancel Event
-* `post_scheduled_events_uuid_cancellation_raw` - Cancel Event
-* `post_invitee_no_show` - Create Invitee No Show
+* `get_invitees_by_uuid` - Get Event Invitee
+* `get_no_show` - Get Invitee No Show
+* `get_scheduled_events` - Get Event
+* `list_scheduled_events` - List Events
 
 ### scheduling_links
 
@@ -123,14 +105,14 @@ if res.activity_log_200_application_json_object is not None:
 
 ### users
 
-* `get_my_user_account` - Get current user
 * `get_user` - Get user
+* `me` - Get current user
 
 ### webhooks
 
 * `delete_users_user_uuid_webhooks_webhook_uuid` - Delete Webhook Subscription
 * `get_users_user_uuid_webhooks_webhook_uuid` - Get Webhook Subscription
-* `get_webhooks` - List Webhook Subscriptions
+* `list_webhooks` - List Webhook Subscriptions
 * `post_users_uuid_webhooks` - Create Webhook Subscription
 <!-- End SDK Available Operations -->
 

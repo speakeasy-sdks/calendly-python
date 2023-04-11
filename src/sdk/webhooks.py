@@ -73,7 +73,7 @@ class Webhooks:
 
         return res
 
-    def get_webhooks(self, request: operations.GetWebhooksRequest) -> operations.GetWebhooksResponse:
+    def list_webhooks(self, request: operations.ListWebhooksRequest) -> operations.ListWebhooksResponse:
         r"""List Webhook Subscriptions
         Get a list of Webhook Subscriptions for a specified Organization or User.
         """
@@ -81,27 +81,27 @@ class Webhooks:
         
         url = base_url.removesuffix('/') + '/webhook_subscriptions'
         
-        query_params = utils.get_query_params(operations.GetWebhooksRequest, request)
+        query_params = utils.get_query_params(operations.ListWebhooksRequest, request)
         
         client = self._security_client
         
         http_res = client.request('GET', url, params=query_params)
         content_type = http_res.headers.get('Content-Type')
 
-        res = operations.GetWebhooksResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListWebhooksResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetWebhooks200ApplicationJSON])
-                res.get_webhooks_200_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListWebhooks200ApplicationJSON])
+                res.list_webhooks_200_application_json_object = out
         elif http_res.status_code in [400, 401, 404]:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetWebhooksErrorResponse])
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListWebhooksErrorResponse])
                 res.error_response = out
         elif http_res.status_code == 403:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.GetWebhooks403ApplicationJSON])
-                res.get_webhooks_403_application_json_object = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.ListWebhooks403ApplicationJSON])
+                res.list_webhooks_403_application_json_object = out
 
         return res
 

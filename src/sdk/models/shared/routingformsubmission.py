@@ -15,6 +15,7 @@ from typing import Any, Optional
 class RoutingFormSubmissionSubmitterTypeEnum(str, Enum):
     r"""Type of the respondent resource that submitted the form and scheduled a meeting."""
     INVITEE = 'Invitee'
+    NULL = 'null'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
